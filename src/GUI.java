@@ -423,7 +423,7 @@ public class GUI extends Application {
 
             @Override
             public void handle(ActionEvent arg0) {
-                histogramWindow().setBackground(back);
+                histogramWindow();
 
             }
         });
@@ -431,14 +431,14 @@ public class GUI extends Application {
         lineGraphButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                lineWindow().setBackground(back);
+                lineWindow();
             }
         });
         
         barChartButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                barWindow().setBackground(back);
+                barWindow();
             }
         });
 
