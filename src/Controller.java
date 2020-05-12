@@ -71,9 +71,11 @@ public class Controller {
 		}
 
 		catch (IOException ex) {
+			GUI.displayError(ex.getMessage());
 		}
 
 		catch (ClassNotFoundException ex) {
+			GUI.displayError(ex.getMessage());
 		}
 
 	}
@@ -91,7 +93,7 @@ public class Controller {
 			out.close();
 			file.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		}
 
 	}
@@ -144,7 +146,7 @@ public class Controller {
 				Files.createDirectories(path);
 			} catch (IOException e) {
 				//fail to create directory
-				e.printStackTrace();
+				GUI.displayError(e.getMessage());
 			}
 		}
 
@@ -176,7 +178,7 @@ public class Controller {
 					fos.write(buffer, 0, length);
 				}
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				GUI.displayError(e1.getMessage());
 			}
 		}
 
@@ -189,8 +191,7 @@ public class Controller {
 			writer.close();
 		}
 		catch (IOException e){
-			System.err.println("Cannot create directories - " + e);
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		}
 
     }
@@ -206,9 +207,9 @@ public class Controller {
 	    	loadOldCampaign(path + File.separator + SERVER_LOG_NAME, path + File.separator + CLICK_LOG_NAME, path + File.separator + IMPRESSION_LOG_NAME, Integer.parseInt(list[0]), campaignName);
 
         }catch (FileNotFoundException e){
-	        e.printStackTrace();
+			GUI.displayError(e.getMessage());
         }catch (IOException e){
-	        e.printStackTrace();
+			GUI.displayError(e.getMessage());
         }
 	    long endTime = System.nanoTime();
     }
@@ -727,7 +728,7 @@ public class Controller {
 				Files.createDirectories(path);
 			} catch (IOException e) {
 				//fail to create directory
-				e.printStackTrace();
+				GUI.displayError(e.getMessage());
 			}
 		}
 

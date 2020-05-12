@@ -15,7 +15,7 @@ public class FileDelete
         }
         catch(Exception e)
         {
-            e.printStackTrace();
+            GUI.displayError(e.getMessage());
         }
     }
 }  

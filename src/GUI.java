@@ -92,7 +92,7 @@ public class GUI extends Application {
     private static Controller controller;
 
     private Paint fill;
-    private String currentCss = "/GUI.css";
+    private static String currentCss = "/GUI.css";
     private static File impressionFile;
     private static File clicksFile;
     private static File serverFile;
@@ -862,7 +862,7 @@ public class GUI extends Application {
                         		((DatePicker) m).setValue(filters.getEndDate().toLocalDate());
                         	}
                         }catch(NullPointerException e){
-                            
+                            GUI.displayError(e.getMessage());
                         }
                     } else if(m instanceof CheckComboBox) {
                     	
@@ -1309,7 +1309,7 @@ public class GUI extends Application {
                         		((DatePicker) m).setValue(filters.getEndDate().toLocalDate());
                         	}
                         }catch(NullPointerException e){
-                            
+                            GUI.displayError(e.getMessage());
                         }
                     } else if(m instanceof CheckComboBox) {
                     	
@@ -1500,7 +1500,7 @@ public class GUI extends Application {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
             } catch (IOException e) {
-                e.printStackTrace();
+                GUI.displayError(e.getMessage());
             }
         }
     }
@@ -1773,7 +1773,7 @@ public class GUI extends Application {
                         		((DatePicker) m).setValue(filters.getEndDate().toLocalDate());
                         	}
                         }catch(NullPointerException e){
-                            
+                            GUI.displayError(e.getMessage());
                         }
                     } else if(m instanceof CheckComboBox) {
                     	
@@ -2022,7 +2022,7 @@ public class GUI extends Application {
                             try {
                                 mainWindow();
                             } catch (Exception e) {
-                                e.printStackTrace();
+                                GUI.displayError(e.getMessage());
                             }
                             newWindow.close();
                         }
@@ -2081,7 +2081,7 @@ public class GUI extends Application {
                             try {
                                 currentFile.delete();
                             } catch (Exception e) {
-                                e.printStackTrace();
+                                GUI.displayError(e.getMessage());
                             }
                         }
 
@@ -2120,7 +2120,7 @@ public class GUI extends Application {
 						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+                        GUI.displayError(e.getMessage());
 					}
                 }
             }
@@ -2147,7 +2147,7 @@ public class GUI extends Application {
 						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+                        GUI.displayError(e.getMessage());
 					}
                 }
             }
@@ -2174,7 +2174,7 @@ public class GUI extends Application {
 						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+                        GUI.displayError(e.getMessage());
 					}
                 }
             }
@@ -2197,7 +2197,7 @@ public class GUI extends Application {
 	                    try {
 	                        mainWindow();
 	                    } catch (Exception e) {
-	                        e.printStackTrace();
+                            GUI.displayError(e.getMessage());
 	                    }
 	                    newWindow.close();
                 	}
@@ -2333,7 +2333,7 @@ public class GUI extends Application {
         }
     }
     
-    public void displayError(String error) {
+    public static void displayError(String error) {
     	Stage window = new Stage();
     	BorderPane bp = new BorderPane();
     	window.setTitle("Error");
@@ -2344,6 +2344,5 @@ public class GUI extends Application {
     	scene.getStylesheets().add(currentCss);
     	window.setScene(scene);
     	window.show();
-    	
     }
 }

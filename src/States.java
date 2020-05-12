@@ -10,9 +10,9 @@ public class States {
             FileOutputStream f = new FileOutputStream(new File(filename + ".txt"));
             o = new ObjectOutputStream(f);
         } catch(FileNotFoundException e){
-            e.printStackTrace();
+            GUI.displayError(e.getMessage());
         }catch (IOException e){
-            e.printStackTrace();
+            GUI.displayError(e.getMessage());
         }
 
         ArrayList<Object> campaign = new ArrayList<>();
@@ -36,7 +36,7 @@ public class States {
             o.flush();
             o.close();
         } catch (IOException e ){
-            e.printStackTrace();
+            GUI.displayError(e.getMessage());
         }
     }
 
@@ -48,11 +48,11 @@ public class States {
             objectInputStream.close();
             return campaign;
         } catch (FileNotFoundException e ){
-            e.printStackTrace();
+            GUI.displayError(e.getMessage());
         } catch (IOException e){
-            e.printStackTrace();
+            GUI.displayError(e.getMessage());
         } catch (ClassNotFoundException e){
-            e.printStackTrace();
+            GUI.displayError(e.getMessage());
         }
         return null;
     }

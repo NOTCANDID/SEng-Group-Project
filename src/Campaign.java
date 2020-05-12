@@ -83,12 +83,15 @@ public class Campaign implements Serializable {
 		String clickLog = clickFileName;
 		File clickLogFile = new File(clickLog);
 		String clickLine = "";
+
 		try {
+
 			Scanner inputStream = new Scanner(clickLogFile);
 			//To remove the first clickLine (headings)
 			inputStream.nextLine();
 
 			while (inputStream.hasNext()){
+
 				clickLine = inputStream.nextLine();
 				//seperating colums based on comma
 				String[] clickValues = clickLine.split(",");
@@ -105,7 +108,7 @@ public class Campaign implements Serializable {
 			inputStream.close();
 		
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		}
 
 		long startTime = System.nanoTime();
@@ -159,7 +162,7 @@ public class Campaign implements Serializable {
 			}
 			
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		} 
 		this.impressions = impressions;
 		impressionSet = new HashMap<>();
@@ -203,13 +206,13 @@ public class Campaign implements Serializable {
 
 					serverEntries.add(new ServerEntry(entryDate,id,exitDate,pagesViewed,conversion));
 				} catch(NullPointerException e) {
-					e.printStackTrace();
+					GUI.displayError(e.getMessage());
 				}
 			}
 			inputStream.close();
 	
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		}
 		for(ServerEntry s : serverEntries){
 			String ageGroup = impressionSet.get(s.getID()).getAgeGroup();
