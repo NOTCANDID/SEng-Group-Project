@@ -2139,7 +2139,7 @@ public class GUI extends Application {
         alert.setTitle("Error Dialog");
         alert.setHeaderText(null);
         alert.setContentText(error);
-        alert.getDialogPane().getStylesheets().add(currentCss);
+        alert.getDialogPane().getStylesheets().add("/GUI.css");
         alert.showAndWait();
     }
 }
