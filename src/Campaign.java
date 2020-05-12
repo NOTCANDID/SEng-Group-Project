@@ -83,12 +83,15 @@ public class Campaign implements Serializable {
 		String clickLog = clickFileName;
 		File clickLogFile = new File(clickLog);
 		String clickLine = "";
+
 		try {
+
 			Scanner inputStream = new Scanner(clickLogFile);
 			//To remove the first clickLine (headings)
 			inputStream.nextLine();
 
 			while (inputStream.hasNext()){
+
 				clickLine = inputStream.nextLine();
 				//seperating colums based on comma
 				String[] clickValues = clickLine.split(",");
@@ -105,7 +108,7 @@ public class Campaign implements Serializable {
 			inputStream.close();
 		
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		}
 
 		long startTime = System.nanoTime();
@@ -125,8 +128,6 @@ public class Campaign implements Serializable {
 
 		}
 		this.clicks = clicks;
-		long endTime = System.nanoTime();
-		System.out.println("Method took:" + (endTime - startTime) / 1000000);
 	}
 
 	public void loadImpressionLog (String impressionFileName){
@@ -157,14 +158,11 @@ public class Campaign implements Serializable {
 				String context = impressionValues[5];
 				Float impressionCost = Float.parseFloat(impressionValues[6]);
 
-				if(context.equals("Travel") || context.equals("Hobbies")){
-					System.out.println(context);
-				}
 				impressions.add(new Impression(dateTime,id,gender,ageGroup,income,context,impressionCost));
 			}
 			
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		} 
 		this.impressions = impressions;
 		impressionSet = new HashMap<>();
@@ -208,13 +206,13 @@ public class Campaign implements Serializable {
 
 					serverEntries.add(new ServerEntry(entryDate,id,exitDate,pagesViewed,conversion));
 				} catch(NullPointerException e) {
-					e.printStackTrace();
+					GUI.displayError(e.getMessage());
 				}
 			}
 			inputStream.close();
 	
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		}
 		for(ServerEntry s : serverEntries){
 			String ageGroup = impressionSet.get(s.getID()).getAgeGroup();

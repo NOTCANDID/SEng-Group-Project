@@ -841,7 +841,7 @@ public class GUI extends Application {
                         		((DatePicker) m).setValue(filters.getEndDate().toLocalDate());
                         	}
                         }catch(NullPointerException e){
-                            
+                            GUI.displayError(e.getMessage());
                         }
                     } else if(m instanceof CheckComboBox) {
                     	
@@ -1285,7 +1285,7 @@ public class GUI extends Application {
                         		((DatePicker) m).setValue(filters.getEndDate().toLocalDate());
                         	}
                         }catch(NullPointerException e){
-                            
+                            GUI.displayError(e.getMessage());
                         }
                     } else if(m instanceof CheckComboBox) {
                     	
@@ -1476,7 +1476,7 @@ public class GUI extends Application {
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
             } catch (IOException e) {
-                e.printStackTrace();
+                GUI.displayError(e.getMessage());
             }
         }
     }
@@ -1561,7 +1561,7 @@ public class GUI extends Application {
                         		((DatePicker) m).setValue(filters.getEndDate().toLocalDate());
                         	}
                         }catch(NullPointerException e){
-                            
+                            GUI.displayError(e.getMessage());
                         }
                     } else if(m instanceof CheckComboBox) {
                     	
@@ -1810,7 +1810,7 @@ public class GUI extends Application {
                             try {
                                 mainWindow();
                             } catch (Exception e) {
-                                e.printStackTrace();
+                                GUI.displayError(e.getMessage());
                             }
                             newWindow.close();
                         }
@@ -1869,7 +1869,7 @@ public class GUI extends Application {
                             try {
                                 deleteDirectory(currentFile);
                             } catch (Exception e) {
-                                e.printStackTrace();
+                                GUI.displayError(e.getMessage());
                             }
                         }
 
@@ -1908,7 +1908,7 @@ public class GUI extends Application {
 						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+                        GUI.displayError(e.getMessage());
 					}
                 }
             }
@@ -1935,7 +1935,7 @@ public class GUI extends Application {
 						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+                        GUI.displayError(e.getMessage());
 					}
                 }
             }
@@ -1962,7 +1962,7 @@ public class GUI extends Application {
 						
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+                        GUI.displayError(e.getMessage());
 					}
                 }
             }
@@ -1977,9 +1977,7 @@ public class GUI extends Application {
                 	
                 	try {
                 		Integer bounceRate = Integer.parseInt(bounceField.getText());
-	                    System.out.println(serverFile.getAbsolutePath());
-	                    System.out.println(clicksFile.getAbsolutePath());
-	                    System.out.println(impressionFile.getAbsolutePath());
+
 	                    //campaign.setBounceDefinition(Integer.parseInt(bounceDefiner.getText()));
 	                    
 	                    controller.loadNewCampaign(serverFile.getAbsolutePath(), clicksFile.getAbsolutePath(), impressionFile.getAbsolutePath(), bounceRate);
@@ -1987,7 +1985,7 @@ public class GUI extends Application {
 	                    try {
 	                        mainWindow();
 	                    } catch (Exception e) {
-	                        e.printStackTrace();
+                            GUI.displayError(e.getMessage());
 	                    }
 	                    newWindow.close();
                 	}
@@ -2080,8 +2078,6 @@ public class GUI extends Application {
         Scale scale = null;
         if (defaultPrinter != null)
         {
-            System.out.println(defaultPrinter.getName());
-
 
 
             // Create a printer job for the default printer
@@ -2094,7 +2090,6 @@ public class GUI extends Application {
             if (job.showPageSetupDialog(stage))
             {
                 // Show the printer job status
-                System.out.println(job.jobStatusProperty().asString());
 
                 scale = new Scale(jobSettings.getPageLayout().getPrintableWidth() / node.getBoundsInParent().getWidth(), jobSettings.getPageLayout().getPrintableHeight()/node.getBoundsInParent().getHeight());
                 node.getTransforms().add(scale);
@@ -2104,9 +2099,7 @@ public class GUI extends Application {
                 if (printed)
                 {
                     // End the printer job
-                    System.out.println(job.jobStatusProperty().asString());
                     job.endJob();
-                    System.out.println(job.jobStatusProperty().asString());
 
                 }
                 else
@@ -2130,20 +2123,6 @@ public class GUI extends Application {
             node.getTransforms().remove(scale);
         }
     }
-    
-    public void displayError(String error) {
-    	Stage window = new Stage();
-    	BorderPane bp = new BorderPane();
-    	window.setTitle("Error");
-    	Label errorLabel = new Label(error);
-    	bp.setCenter(errorLabel);
-    	
-    	Scene scene = new Scene(bp, 400, 100);
-    	scene.getStylesheets().add("/GUI.css");
-    	window.setScene(scene);
-    	window.show();
-    	
-    }
 
     boolean deleteDirectory(File directoryToBeDeleted) {
         File[] allContents = directoryToBeDeleted.listFiles();
@@ -2153,5 +2132,14 @@ public class GUI extends Application {
             }
         }
         return directoryToBeDeleted.delete();
+    }
+    
+    public static void displayError(String error) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText(error);
+        alert.getDialogPane().getStylesheets().add(currentCss);
+        alert.showAndWait();
     }
 }

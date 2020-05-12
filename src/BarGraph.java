@@ -138,11 +138,6 @@ public class BarGraph {
                 break;
         }
 
-        // TODO remove after testing
-        for(Bar bar : bars){
-            System.out.println(bar.getMetric() + " " + bar.getCategory());
-        }
-
         return bars;
     }
 
@@ -247,11 +242,6 @@ public class BarGraph {
                     bars.add(new Bar<>(controller.calcCPM(partitionedImpressions.get(day)), day.toString()));
                 }
                 break;
-        }
-
-        // TODO remove after testing
-        for(Bar bar : bars){
-            System.out.println(bar.getMetric() + " " + bar.getCategory());
         }
 
         return bars;

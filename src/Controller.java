@@ -62,7 +62,6 @@ public class Controller {
 	 * @param fileName of the serialised Campaign file
 	 */
 	public void deserializeCampaign(String fileName){
-		System.out.println("Deserializing campaign ...");
 		try {
 			FileInputStream file = new FileInputStream(fileName);
 			ObjectInputStream in = new ObjectInputStream(file);
@@ -72,16 +71,13 @@ public class Controller {
 		}
 
 		catch (IOException ex) {
-			System.out.println("IOException is caught");
+			GUI.displayError(ex.getMessage());
 		}
 
 		catch (ClassNotFoundException ex) {
-			System.out.println("ClassNotFoundException" + " is caught");
+			GUI.displayError(ex.getMessage());
 		}
 
-		long startTime = System.nanoTime();
-		long endTime = System.nanoTime();
-		System.out.println("Method took:" + (endTime - startTime) / 1000000);
 	}
 
 
@@ -89,7 +85,6 @@ public class Controller {
 	 * @param fileName of the file to be serialised
 	 */
 	public void serializeCampaign(String fileName){
-		System.out.println("Serializing campaign ...");
 		long startTime = System.nanoTime();
 		try {
 			FileOutputStream file = new FileOutputStream(fileName);
@@ -98,7 +93,7 @@ public class Controller {
 			out.close();
 			file.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		}
 
 	}
@@ -151,7 +146,7 @@ public class Controller {
 				Files.createDirectories(path);
 			} catch (IOException e) {
 				//fail to create directory
-				e.printStackTrace();
+				GUI.displayError(e.getMessage());
 			}
 		}
 
@@ -183,7 +178,7 @@ public class Controller {
 					fos.write(buffer, 0, length);
 				}
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				GUI.displayError(e1.getMessage());
 			}
 		}
 
@@ -196,8 +191,7 @@ public class Controller {
 			writer.close();
 		}
 		catch (IOException e){
-			System.err.println("Cannot create directories - " + e);
-			e.printStackTrace();
+			GUI.displayError(e.getMessage());
 		}
 
     }
@@ -209,18 +203,15 @@ public class Controller {
 			BufferedReader reader = new BufferedReader(new FileReader(path + File.separator + "config.txt"));
 			String line = reader.readLine();
 			String[] list = line.split(" ");
-			System.out.println(list[0]);
 
 	    	loadOldCampaign(path + File.separator + SERVER_LOG_NAME, path + File.separator + CLICK_LOG_NAME, path + File.separator + IMPRESSION_LOG_NAME, Integer.parseInt(list[0]), campaignName);
 
-	    	System.out.println(gui == null);
         }catch (FileNotFoundException e){
-	        e.printStackTrace();
+			GUI.displayError(e.getMessage());
         }catch (IOException e){
-	        e.printStackTrace();
+			GUI.displayError(e.getMessage());
         }
 	    long endTime = System.nanoTime();
-		System.out.println("Method took:" + (endTime - startTime) / 1000000);
     }
 
 	public double getBounceRate(){
@@ -309,7 +300,6 @@ public class Controller {
 			startDatePredicate = c -> c.getDateTime().isAfter(filter.getStartDate()) || c.getDateTime().isEqual(filter.getStartDate()) ; // TODO Discuss if it needs to be inclusive
 		}
 		else{
-			System.out.println("startDate is null");
 			startDatePredicate = c -> true;
 		}
 
@@ -319,7 +309,6 @@ public class Controller {
 			endDatePredicate = c -> c.getDateTime().isBefore(filter.getEndDate()) || c.getDateTime().isEqual(filter.getEndDate());
 		}
 		else{
-			System.out.println("endDate is null");
 			endDatePredicate = c -> true;
 		}
 
@@ -329,7 +318,6 @@ public class Controller {
 			contextsPredicate = c -> matchContext(c.getContext(), filter);
 		}
 		else{
-			System.out.println("contexts are empty");
 			contextsPredicate = c -> true;
 		}
 
@@ -339,7 +327,6 @@ public class Controller {
 			genderPredicate = c -> c.getGender().equals(filter.getGender());
 		}
 		else{
-			System.out.println("gender is null");
 			genderPredicate = c -> true;
 		}
 
@@ -349,7 +336,6 @@ public class Controller {
 			ageGroupPredicate = c -> matchAgeGroup(c.getAgeGroup(), filter);
 		}
 		else{
-			System.out.println("ageGroup is empty");
 			ageGroupPredicate = c -> true;
 		}
 
@@ -359,7 +345,6 @@ public class Controller {
 			incomePredicate = c -> matchIncome(c.getIncome(), filter);
 		}
 		else{
-			System.out.println("income is empty");
 			incomePredicate = c -> true;
 		}
 
@@ -387,7 +372,6 @@ public class Controller {
 			startDatePredicate = c -> c.getEntryDate().isAfter(filter.getStartDate()) || c.getEntryDate().isEqual(filter.getStartDate()); // TODO Discuss if it needs to be inclusive
 		}
 		else{
-			System.out.println("startDate is null");
 			startDatePredicate = c -> true;
 		}
 
@@ -397,7 +381,6 @@ public class Controller {
 			endDatePredicate = c -> c.getEntryDate().isBefore(filter.getEndDate()) || c.getEntryDate().isEqual(filter.getEndDate());
 		}
 		else{
-			System.out.println("endDate is null");
 			endDatePredicate = c -> true;
 		}
 
@@ -407,7 +390,6 @@ public class Controller {
 			contextsPredicate = c -> matchContext(c.getContext(), filter);
 		}
 		else{
-			System.out.println("contexts are empty");
 			contextsPredicate = c -> true;
 		}
 
@@ -417,7 +399,6 @@ public class Controller {
 			genderPredicate = c -> c.getGender().equals(filter.getGender());
 		}
 		else{
-			System.out.println("gender is null");
 			genderPredicate = c -> true;
 		}
 
@@ -427,7 +408,6 @@ public class Controller {
 			ageGroupPredicate = c -> matchAgeGroup(c.getAgeGroup(), filter);
 		}
 		else{
-			System.out.println("ageGroup is empty");
 			ageGroupPredicate = c -> true;
 		}
 
@@ -437,7 +417,6 @@ public class Controller {
 			incomePredicate = c -> matchIncome(c.getIncome(), filter);
 		}
 		else{
-			System.out.println("income is empty");
 			incomePredicate = c -> true;
 		}
 
@@ -465,7 +444,6 @@ public class Controller {
 			startDatePredicate = c -> c.getDateTime().isAfter(filter.getStartDate()) || c.getDateTime().isEqual(filter.getStartDate()); // TODO Discuss if it needs to be inclusive
 		}
 		else{
-			System.out.println("startDate is null");
 			startDatePredicate = c -> true;
 		}
 
@@ -475,7 +453,6 @@ public class Controller {
 			endDatePredicate = c -> c.getDateTime().isBefore(filter.getEndDate()) || c.getDateTime().isEqual(filter.getEndDate());
 		}
 		else{
-			System.out.println("endDate is null");
 			endDatePredicate = c -> true;
 		}
 
@@ -485,7 +462,6 @@ public class Controller {
 			contextsPredicate = c -> matchContext(c.getContext(), filter);
 		}
 		else{
-			System.out.println("contexts are empty");
 			contextsPredicate = c -> true;
 		}
 
@@ -495,7 +471,6 @@ public class Controller {
 			genderPredicate = c -> c.getGender().equals(filter.getGender());
 		}
 		else{
-			System.out.println("gender is null");
 			genderPredicate = c -> true;
 		}
 
@@ -505,7 +480,6 @@ public class Controller {
 			ageGroupPredicate = c -> matchAgeGroup(c.getAgeGroup(), filter);
 		}
 		else{
-			System.out.println("ageGroup is empty");
 			ageGroupPredicate = c -> true;
 		}
 
@@ -515,7 +489,6 @@ public class Controller {
 			incomePredicate = c -> matchIncome(c.getIncome(), filter);
 		}
 		else{
-			System.out.println("income is empty");
 			incomePredicate = c -> true;
 		}
 
@@ -755,7 +728,7 @@ public class Controller {
 				Files.createDirectories(path);
 			} catch (IOException e) {
 				//fail to create directory
-				e.printStackTrace();
+				GUI.displayError(e.getMessage());
 			}
 		}
 
