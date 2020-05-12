@@ -1,4 +1,4 @@
-/* 
+/*
     Document   : controlStyle1
 */
 
@@ -25,9 +25,11 @@
 
 
 
+
 #currentText {
-    -fx-text-fill: #000000
+    -fx-text-fill: #FFFFFF
 }
+
 
 .dialog-pane:header *.header-panel{-fx-background-color: #c8e3f0;}
 
@@ -40,39 +42,39 @@
 .choice-box:hover{ -fx-background-color: #248fc1; -fx-text-fill: #e4f1f7; }
 
 .choice-box {
-  -fx-background-color: #5babd1; 
-  -fx-mark-color: #e4f1f7;
-  -fx-text-fill: #e4f1f7;
+    -fx-background-color: #5babd1;
+    -fx-mark-color: #e4f1f7;
+    -fx-text-fill: #e4f1f7;
 }
 
 
 .jfx-combo-box *.label {
-	-fx-background-color: #5babd1; -fx-text-fill: #e4f1f7;
+    -fx-background-color: #5babd1; -fx-text-fill: #e4f1f7;
 }
 
 
 .combo-box-popup *.list-view *.list-cell{
-	-fx-background-color: #5babd1; -fx-border-color: #5babd1; -fx-text-fill: #e4f1f7;
+    -fx-background-color: #5babd1; -fx-border-color: #5babd1; -fx-text-fill: #e4f1f7;
 }
 .combo-box-popup *.list-view *.list-cell:hover{
     -fx-background-color: #248fc1; -fx-text-fill: #e4f1f7;
 }
 .combo-box-base {
-	-fx-background-color: #5babd1; -fx-text-fill: #e4f1f7;
-	
+    -fx-background-color: #5babd1; -fx-text-fill: #e4f1f7;
+
 }
 
 .combo-box-base:hover{
-	-fx-background-color: #248fc1; -fx-text-fill: #e4f1f7;
-	
+    -fx-background-color: #248fc1; -fx-text-fill: #e4f1f7;
+
 }
 
 .region {
-	-fx-background-color: blue;
+    -fx-background-color: blue;
 }
 
 .combo-box .arrow, .combo-box .arrow-button{
-     -fx-mark-color: #e4f1f7;
+    -fx-mark-color: #e4f1f7;
 }
 
 .button {

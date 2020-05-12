@@ -23,6 +23,12 @@
 
 .dialog-pane {-fx-background-color: #c8e3f0;}
 
+
+
+#currentText {
+    -fx-text-fill: #000000
+}
+
 .dialog-pane:header *.header-panel{-fx-background-color: #c8e3f0;}
 
 

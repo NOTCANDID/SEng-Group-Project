@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.css.PseudoClass;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.print.*;
 import javafx.scene.image.*;
@@ -90,6 +91,8 @@ import java.util.*;
 public class GUI extends Application {
     private static Controller controller;
 
+    private Paint fill;
+    private String currentCss = "/GUI.css";
     private static File impressionFile;
     private static File clicksFile;
     private static File serverFile;
@@ -154,6 +157,7 @@ public class GUI extends Application {
         Group root = new Group();
         Stage primaryStage = new Stage();
 
+
         StackPane layering = new StackPane();
         Canvas canvas = new Canvas();
 
@@ -170,6 +174,8 @@ public class GUI extends Application {
         TilePane impressionFilterOptions = impressionFilters();
         BorderPane filters = new BorderPane();
         Button filterButton = new Button("Apply Filters");
+
+
         filters.setAlignment(filterButton, Pos.BOTTOM_LEFT);
        // filterButton.setAlignment(Pos.BOTTOM_RIGHT);
         filters.setLeft(impressionFilterOptions);
@@ -280,7 +286,7 @@ public class GUI extends Application {
                 if(campaigns.size() == 0){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Load Campaign");
-                    alert.getDialogPane().getStylesheets().add("/GUI.css");
+                    alert.getDialogPane().getStylesheets().add(currentCss);
                     alert.setHeaderText(null);
                     alert.setContentText("There are no campaigns to load.");
 
@@ -288,7 +294,7 @@ public class GUI extends Application {
                 }
                 else{
                     ChoiceDialog<String> dialog = new ChoiceDialog<>(campaigns.get(0), campaigns);
-                    dialog.getDialogPane().getStylesheets().add("/GUI.css");
+                    dialog.getDialogPane().getStylesheets().add(currentCss);
                     dialog.setTitle("AdAuction");
                     dialog.setHeaderText("Load Campaign");
                     dialog.setContentText("Select campaign to be loaded:");
@@ -299,7 +305,7 @@ public class GUI extends Application {
                         controller.loadCampaign(result.get());
                         primaryStage.setTitle("Ad Auction Dashboard - " + controller.getCampaign().getName());
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.getDialogPane().getStylesheets().add("/GUI.css");
+                        alert.getDialogPane().getStylesheets().add(currentCss);
                         alert.setTitle("Load Campaign");
                         alert.setHeaderText(null);
                         alert.setContentText(result.get() + " has been loaded.");
@@ -315,7 +321,7 @@ public class GUI extends Application {
                 controller.saveCampaign(campaignName);
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.getDialogPane().getStylesheets().add("/GUI.css");
+                alert.getDialogPane().getStylesheets().add(currentCss);
                 alert.setTitle("Load Campaign");
                 alert.setHeaderText(null);
                 alert.setContentText("Campaign saved as \"" + campaignName + "\".");
@@ -328,7 +334,7 @@ public class GUI extends Application {
                 @Override
                 public void handle(ActionEvent event) {
                     TextInputDialog dialog = new TextInputDialog();
-                    dialog.getDialogPane().getStylesheets().add("/GUI.css");
+                    dialog.getDialogPane().getStylesheets().add(currentCss);
                     dialog.setTitle("AdAuction");
                     dialog.setHeaderText("Save campaign");
                     dialog.setContentText("Please enter the name of the campaign:");
@@ -336,7 +342,7 @@ public class GUI extends Application {
                     Optional<String> result = dialog.showAndWait();
                     if (result.isPresent()){
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.getDialogPane().getStylesheets().add("/GUI.css");
+                        alert.getDialogPane().getStylesheets().add(currentCss);
                         alert.setHeaderText(null);
                         alert.setTitle("Save Campaign");
                         if(result.get().equals("")){
@@ -366,7 +372,7 @@ public class GUI extends Application {
         colorPicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Paint fill = colorPicker.getValue();
+                fill = colorPicker.getValue();
                 BackgroundFill backgroundFill = new BackgroundFill(fill, CornerRadii.EMPTY,Insets.EMPTY);
                 Background background = new Background(backgroundFill);
                 back = background;
@@ -378,7 +384,35 @@ public class GUI extends Application {
         });
 
 
-        options.getChildren().addAll(mb,colorPicker);
+        ToggleButton switchColour = new ToggleButton("Text Font Switch");
+        switchColour.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if(switchColour.isSelected()) {
+                    currentCss = "/GUIAlt.css";
+                    primaryStage.getScene().getStylesheets().remove(0);
+                    primaryStage.getScene().getStylesheets().add(getClass().getResource(currentCss).toExternalForm());
+                } else {
+                    currentCss = "/GUI.css";
+                    primaryStage.getScene().getStylesheets().remove(0);
+                    primaryStage.getScene().getStylesheets().add(getClass().getResource(currentCss).toExternalForm());
+                }
+
+                if(fill != null) {
+                    BackgroundFill backgroundFill = new BackgroundFill(fill, CornerRadii.EMPTY, Insets.EMPTY);
+                    Background background = new Background(backgroundFill);
+                    back = background;
+                    // add back on top
+                    System.out.println(fill);
+                    mainWindow.setBackground(back);
+                    //   histogramWindow().setBackground(background);
+                    mb.setBackground(back);
+                }
+
+            }
+        });
+
+        options.getChildren().addAll(mb,colorPicker, switchColour);
         
        // toolBar.getChildren().add(options);
         Button lineGraphButton = new Button();
@@ -419,14 +453,20 @@ public class GUI extends Application {
         lineGraphButton.setGraphic(new ImageView(lineGraphimage));
 
         VBox chart1 = new VBox();
-            chart1.getChildren().addAll(lineGraphButton, new Label("Create Line Graph"));
+            Label lineLabel = new Label("Create Line Graph");
+            chart1.getChildren().addAll(lineGraphButton, lineLabel);
+            lineLabel.setId("currentText");
             chart1.setAlignment(Pos.CENTER);
         VBox chart2 = new VBox();
-            chart2.getChildren().addAll(histogramButton, new Label("Create Histogram" ));
+            Label histoLabel = new Label("Create Histogram");
+            chart2.getChildren().addAll(histogramButton, histoLabel);
             chart2.setAlignment(Pos.CENTER);
+            histoLabel.setId("currentText");
         VBox chart3 = new VBox();
-            chart3.getChildren().addAll(barChartButton, new Label("Create Bar Chart"));
+            Label barLabel = new Label("Create Bar Chart");
+            chart3.getChildren().addAll(barChartButton, barLabel);
             chart3.setAlignment(Pos.CENTER);
+            barLabel.setId("currentText");
 
         chartOptions.getChildren().addAll(chart1, chart2, chart3);
         BorderPane.setMargin(filtersAndMetrics, new Insets(60, 100, 10, 50));//top was 150
@@ -487,8 +527,8 @@ public class GUI extends Application {
         root.getChildren().add(layering);
 	    root.setAutoSizeChildren(true);
         Scene scene = new Scene(root, 1700, 700);
-        scene.getStylesheets().add("/GUI.css");
         primaryStage.setScene(scene);
+        scene.getStylesheets().add(currentCss);
         primaryStage.setTitle("Ad Auction Dashboard");
         primaryStage.show();
 
@@ -523,6 +563,19 @@ public class GUI extends Application {
         Label cpmLabel = new Label("Cost per 1000 impressions");
         Label totalCostLabel = new Label("Total Cost");
         Label conversionRateLabel = new Label("Conversion Rate");
+
+        bounceRateLabel.setId("currentText");
+        noImpressionsLabel.setId("currentText");
+        noClicksLabel.setId("currentText");
+        noUniquesLabel.setId("currentText");
+        noBouncesLabel.setId("currentText");
+        noConversionsLabel.setId("currentText");
+        ctrLabel.setId("currentText");
+        cpaLabel.setId("currentText");
+        cpcLabel.setId("currentText");
+        cpmLabel.setId("currentText");
+        totalCostLabel.setId("currentText");
+        conversionRateLabel.setId("currentText");
 
         bounceRateField = new TextField();
         noImpressionsField = new TextField();
@@ -691,7 +744,7 @@ public class GUI extends Application {
         Scene scene = new Scene(windowLayout, 425, 425);
 
         newWindow.setScene(scene);
-        scene.getStylesheets().add("/GUI.css");
+        scene.getStylesheets().add(currentCss);
         newWindow.setTitle("Create Histogram - " + controller.getCampaign().getName());
         newWindow.show();
 
@@ -722,6 +775,13 @@ public class GUI extends Application {
         Label contextLabel = new Label("Context");
         Label genderLabel = new Label("Gender");
         Label incomeLabel = new Label("Income");
+
+        ageLabel.setId("currentText");
+        entryLabel.setId("currentText");
+        exitLabel.setId("currentText");
+        contextLabel.setId("currentText");
+        genderLabel.setId("currentText");
+        incomeLabel.setId("currentText");
         
         DatePicker entryDate = new DatePicker(controller.getCampaignStartDate());
         DatePicker exitDate = new DatePicker(controller.getCampaignEndDate());
@@ -943,7 +1003,7 @@ public class GUI extends Application {
         
         
         Scene scene = new Scene(vbox, 800, 700);
-        scene.getStylesheets().add("/GUI.css");
+        scene.getStylesheets().add(currentCss);
         window.setTitle("Historgram - " + controller.getCampaign().getName());
         window.setScene(scene);
         window.show();
@@ -959,6 +1019,7 @@ public class GUI extends Application {
         HBox impressionMetricsOptions = addImpHbox();
         VBox filterPane = new VBox(10);
         Label granLabel = new Label("Granularity: ");
+        granLabel.setId("currentText");
         filterPane.getChildren().addAll(impressionFilterOptions, impressionMetricsOptions);
 
         ComboBox<TimeInterval> granularity =
@@ -1059,7 +1120,7 @@ public class GUI extends Application {
         
         Scene scene = new Scene(windowLayout, 425, 425);
         window.setScene(scene);
-        scene.getStylesheets().add("/GUI.css");
+        scene.getStylesheets().add(currentCss);
         window.setTitle("Create LineGraph - " + controller.getCampaign().getName());
         window.show();
 
@@ -1075,6 +1136,7 @@ public class GUI extends Application {
         HBox impressionMetricsOptions = addImpHbox();
         VBox filterPane = new VBox(10);
         Label barTypeLabel = new Label("Type: ");
+        barTypeLabel.setId("currentText");
         filterPane.getChildren().addAll(impressionFilterOptions, impressionMetricsOptions);
 
         ComboBox<BarChartType> type =
@@ -1177,7 +1239,7 @@ public class GUI extends Application {
 
         Scene scene = new Scene(windowLayout, 425, 425);
         window.setScene(scene);
-        scene.getStylesheets().add("/GUI.css");
+        scene.getStylesheets().add(currentCss);
         window.setTitle("Create Bar Chart - " + controller.getCampaign().getName());
         window.show();
 
@@ -1216,6 +1278,7 @@ public class GUI extends Application {
         HBox impressionMetricsOptions = addImpHbox();
         VBox filterPane = new VBox(10);
         Label granLabel = new Label("Type: ");
+        granLabel.setId("currentText");
         filterPane.getChildren().addAll(impressionFilterOptions, impressionMetricsOptions);
 
 
@@ -1398,7 +1461,7 @@ public class GUI extends Application {
         Scene scene = new Scene(mainWindow, 900, 800);
         //lineChart.getData().add(series);
         barChart.getData().addAll(series);
-        scene.getStylesheets().add("/GUI.css");
+        scene.getStylesheets().add(currentCss);
         stage.setScene(scene);
         stage.show();
 	
@@ -1413,7 +1476,7 @@ public class GUI extends Application {
 
 
         TextInputDialog dialog = new TextInputDialog();
-        dialog.getDialogPane().getStylesheets().add("/GUI.css");
+        dialog.getDialogPane().getStylesheets().add(currentCss);
         dialog.setTitle("AdAuction");
         dialog.setHeaderText("Save campaign");
         dialog.setContentText("Please enter the name of the campaign:");
@@ -1421,7 +1484,7 @@ public class GUI extends Application {
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.getDialogPane().getStylesheets().add("/GUI.css");
+            alert.getDialogPane().getStylesheets().add(currentCss);
             alert.setHeaderText(null);
             alert.setTitle("Save Campaign");
             if (result.get().equals("")) {
@@ -1467,6 +1530,7 @@ public class GUI extends Application {
 //        impressionMetricChoices.getItems().add(Metric.CONVERSION_RATE);
         impressionMetricChoices.setValue(Metric.BOUNCES);
         Label impressionMetricLabel = new Label("Metric: ");
+        impressionMetricLabel.setId("currentText");
         HBox impMetricBox = new HBox(impressionMetricLabel, impressionMetricChoices);
 
         final String cssDefault = "-fx-border-insets: 10.0 10.0 0.0 10.0;\n"
@@ -1686,6 +1750,7 @@ public class GUI extends Application {
         HBox impressionMetricsOptions = addImpHbox();
         VBox filterPane = new VBox(10);
         Label granLabel = new Label("Granularity: ");
+        granLabel.setId("currentText");
         filterPane.getChildren().addAll(impressionFilterOptions, impressionMetricsOptions);
 
         ObservableList<Node> filterNodes = null;
@@ -1877,7 +1942,7 @@ public class GUI extends Application {
 
 
         new ZoomManager<>(mainWindow, lineChart, series);
-        scene.getStylesheets().add("/GUI.css");
+        scene.getStylesheets().add(currentCss);
         stage.setScene(scene);
         stage.show();
 	    
@@ -1938,7 +2003,7 @@ public class GUI extends Application {
                     if(campaigns.size() == 0){
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Load Campaign");
-                        alert.getDialogPane().getStylesheets().add("/GUI.css");
+                        alert.getDialogPane().getStylesheets().add(currentCss);
                         alert.setHeaderText(null);
                         alert.setContentText("There are no campaigns to load.");
 
@@ -1949,7 +2014,7 @@ public class GUI extends Application {
                         dialog.setTitle("AdAuction");
                         dialog.setHeaderText("Load Campaign");
                         dialog.setContentText("Select campaign to be loaded:");
-                        dialog.getDialogPane().getStylesheets().add("/GUI.css");
+                        dialog.getDialogPane().getStylesheets().add(currentCss);
 
 
                         Optional<String> result = dialog.showAndWait();
@@ -1967,7 +2032,7 @@ public class GUI extends Application {
                 else{
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Load Campaign");
-                    alert.getDialogPane().getStylesheets().add("/GUI.css");
+                    alert.getDialogPane().getStylesheets().add(currentCss);
                     alert.setHeaderText(null);
                     alert.setContentText("There are no campaigns to load.");
 
@@ -1995,7 +2060,7 @@ public class GUI extends Application {
                     if(campaigns.size() == 0){
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.setTitle("Delete Campaign");
-                        alert.getDialogPane().getStylesheets().add("/GUI.css");
+                        alert.getDialogPane().getStylesheets().add(currentCss);
                         alert.setHeaderText(null);
                         alert.setContentText("There are no campaigns to show.");
 
@@ -2006,7 +2071,7 @@ public class GUI extends Application {
                         dialog.setTitle("AdAuction");
                         dialog.setHeaderText("Delete Campaign");
                         dialog.setContentText("Select campaign to be deleted:");
-                        dialog.getDialogPane().getStylesheets().add("/GUI.css");
+                        dialog.getDialogPane().getStylesheets().add(currentCss);
 
 
 //                        CheckComboBox<String> result = new CheckComboBox<>(FXCollections.observableArrayList());
@@ -2026,7 +2091,7 @@ public class GUI extends Application {
                 else{
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Delete Campaign");
-                    alert.getDialogPane().getStylesheets().add("/GUI.css");
+                    alert.getDialogPane().getStylesheets().add(currentCss);
                     alert.setHeaderText(null);
                     alert.setContentText("There are no campaigns to show.");
 
@@ -2157,6 +2222,7 @@ public class GUI extends Application {
 
 
         Label fontSize = new Label("Font size ");
+        fontSize.setId("currentText");
         Label fontLabel = new Label();
         fontLabel.setText(String.valueOf(slider.getValue()));
         HBox fontHbox = new HBox();
@@ -2208,7 +2274,7 @@ public class GUI extends Application {
 
 
         Scene scene = new Scene(fileChooserLayout, 1050, 500);
-        fileChooserLayout.getStylesheets().add("/GUI.css");
+        fileChooserLayout.getStylesheets().add(currentCss);
         newWindow.setScene(scene);
         newWindow.show();
     }
@@ -2283,7 +2349,7 @@ public class GUI extends Application {
     	bp.setCenter(errorLabel);
     	
     	Scene scene = new Scene(bp, 400, 100);
-    	scene.getStylesheets().add("/GUI.css");
+    	scene.getStylesheets().add(currentCss);
     	window.setScene(scene);
     	window.show();
     	
