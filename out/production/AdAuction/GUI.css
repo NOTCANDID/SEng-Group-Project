@@ -15,19 +15,17 @@
 }
 
 .context-menu{-fx-background-color: #5babd1; -fx-border-color: #5babd1; -fx-text-fill: #e4f1f7;}
+.menu *.label {-fx-text-fill: #e4f1f7;}
+.menu:showing *.label {-fx-text-fill: #e4f1f7;}
 .menu-bar {-fx-background-color: #c8e3f0;}
-.menu {-fx-background-color: #5babd1; -fx-border-color: #5babd1; -fx-text-fill: #e4f1f7; -fx-padding: 5 50 5 5;}
+.menu {-fx-background-color: #5babd1; -fx-border-color: #5babd1; -fx-padding: 5 50 5 5;}
 .menu:showing {-fx-background-color: #5babd1; -fx-border-color: #5babd1; -fx-text-fill: #e4f1f7;}
 .menu:showing *.hover{-fx-background-color: #248fc1; -fx-border-color: #248fc1;}
-.menu *.hover{-fx-background-color: #248fc1; -fx-border-color: #248fc1;}
+.menu:hover{-fx-background-color: #248fc1; -fx-border-color: #248fc1;}
+
+
 
 .dialog-pane {-fx-background-color: #c8e3f0;}
-
-
-
-#currentText {
-    -fx-text-fill: #000000
-}
 
 .dialog-pane:header *.header-panel{-fx-background-color: #c8e3f0;}
 
@@ -59,6 +57,17 @@
 }
 .combo-box-base {
 	-fx-background-color: #5babd1; -fx-text-fill: #e4f1f7;
+	
+}
+.combo-box-popup {
+    -fx-text-fill: #e4f1f7;
+}
+.combo-box-popup:label {
+    -fx-text-fill: #e4f1f7;
+}
+
+.combo-box-base:label {
+	-fx-text-fill: #e4f1f7;
 	
 }
 
