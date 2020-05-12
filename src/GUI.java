@@ -2334,15 +2334,11 @@ public class GUI extends Application {
     }
     
     public static void displayError(String error) {
-    	Stage window = new Stage();
-    	BorderPane bp = new BorderPane();
-    	window.setTitle("Error");
-    	Label errorLabel = new Label(error);
-    	bp.setCenter(errorLabel);
-    	
-    	Scene scene = new Scene(bp, 400, 100);
-    	scene.getStylesheets().add(currentCss);
-    	window.setScene(scene);
-    	window.show();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText(error);
+        alert.getDialogPane().getStylesheets().add(currentCss);
+        alert.showAndWait();
     }
 }
