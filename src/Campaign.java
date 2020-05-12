@@ -125,8 +125,6 @@ public class Campaign implements Serializable {
 
 		}
 		this.clicks = clicks;
-		long endTime = System.nanoTime();
-		System.out.println("Method took:" + (endTime - startTime) / 1000000);
 	}
 
 	public void loadImpressionLog (String impressionFileName){
@@ -157,9 +155,6 @@ public class Campaign implements Serializable {
 				String context = impressionValues[5];
 				Float impressionCost = Float.parseFloat(impressionValues[6]);
 
-				if(context.equals("Travel") || context.equals("Hobbies")){
-					System.out.println(context);
-				}
 				impressions.add(new Impression(dateTime,id,gender,ageGroup,income,context,impressionCost));
 			}
 			

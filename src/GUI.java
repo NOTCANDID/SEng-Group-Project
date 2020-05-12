@@ -403,7 +403,6 @@ public class GUI extends Application {
                     Background background = new Background(backgroundFill);
                     back = background;
                     // add back on top
-                    System.out.println(fill);
                     mainWindow.setBackground(back);
                     //   histogramWindow().setBackground(background);
                     mb.setBackground(back);
@@ -2190,9 +2189,7 @@ public class GUI extends Application {
                 	
                 	try {
                 		Integer bounceRate = Integer.parseInt(bounceField.getText());
-	                    System.out.println(serverFile.getAbsolutePath());
-	                    System.out.println(clicksFile.getAbsolutePath());
-	                    System.out.println(impressionFile.getAbsolutePath());
+
 	                    //campaign.setBounceDefinition(Integer.parseInt(bounceDefiner.getText()));
 	                    
 	                    controller.loadNewCampaign(serverFile.getAbsolutePath(), clicksFile.getAbsolutePath(), impressionFile.getAbsolutePath(), bounceRate);
@@ -2290,8 +2287,6 @@ public class GUI extends Application {
         Scale scale = null;
         if (defaultPrinter != null)
         {
-            System.out.println(defaultPrinter.getName());
-
 
 
             // Create a printer job for the default printer
@@ -2304,7 +2299,6 @@ public class GUI extends Application {
             if (job.showPageSetupDialog(stage))
             {
                 // Show the printer job status
-                System.out.println(job.jobStatusProperty().asString());
 
                 scale = new Scale(jobSettings.getPageLayout().getPrintableWidth() / node.getBoundsInParent().getWidth(), jobSettings.getPageLayout().getPrintableHeight()/node.getBoundsInParent().getHeight());
                 node.getTransforms().add(scale);
@@ -2314,9 +2308,7 @@ public class GUI extends Application {
                 if (printed)
                 {
                     // End the printer job
-                    System.out.println(job.jobStatusProperty().asString());
                     job.endJob();
-                    System.out.println(job.jobStatusProperty().asString());
 
                 }
                 else

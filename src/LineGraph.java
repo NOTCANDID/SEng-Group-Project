@@ -101,8 +101,6 @@ public class LineGraph {
         LocalDateTime startDateTime = impressionLog.get(0).getDateTime();
 
         LocalDateTime endDateTime = getEndDateTime(startDateTime);
-        System.out.println(startDateTime);
-        System.out.println(endDateTime);
         int i = 0;
         ArrayList<Impression> impressions = new ArrayList<Impression>();
         while(impressionLog.size() > i){
@@ -289,7 +287,6 @@ public class LineGraph {
         ArrayList<ServerEntry> serverEntries = new ArrayList<ServerEntry>();
         while(serverEntriesLog.size() > i){
             ServerEntry serverEntry = serverEntriesLog.get(i);
-            System.out.println(serverEntry.getEntryDate() + " isBefore " + endDateTime + " " + serverEntry.getEntryDate().isBefore(endDateTime));
             if(serverEntry.getEntryDate().isBefore(endDateTime)){
                 serverEntries.add(serverEntry);
             }
