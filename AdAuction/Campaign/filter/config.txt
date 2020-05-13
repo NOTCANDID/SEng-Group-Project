@@ -1,0 +1,7 @@
+1
+2015-01-01T00:00
+2015-01-14T23:59:59
+Context:News,
+Gender:Male
+Age:<25,
+Income:Low,

@@ -139,6 +139,11 @@ public class GUI extends Application {
 	
 	private Background back = new Background(new BackgroundFill(Color.web("c8e3f0"),CornerRadii.EMPTY,Insets.EMPTY));
 
+	Filter currentFilter = null;
+
+	public void setFilter(Filter filter){
+	    currentFilter = filter;
+    }
 
     public GUI() {
     }
@@ -182,13 +187,60 @@ public class GUI extends Application {
         Button filterButton = new Button("Apply Filters");
 
 
+        if(currentFilter != null) {
+            ObservableList<Node> filterNodes = null;
+            filterNodes = impressionFilterOptions.getChildren();
+
+            int a = 0;
+            int b = 0;
+
+            for (Node n : filterNodes) {
+                if (n instanceof VBox) {
+                    for (Node m : ((VBox) n).getChildren()) {
+                        if (m instanceof ComboBox) {
+                            ((ComboBox) m).setValue(currentFilter.getGender());
+                        } else if (m instanceof DatePicker) {
+                            try {
+                                if (a == 0) {
+                                    ((DatePicker) m).setValue(currentFilter.getStartDate().toLocalDate());
+                                    a++;
+                                } else {
+                                    ((DatePicker) m).setValue(currentFilter.getEndDate().toLocalDate());
+                                }
+                            } catch (NullPointerException e) {
+                                GUI.displayError(e.getMessage());
+                            }
+                        } else if (m instanceof CheckComboBox) {
+
+                            if (b == 0) {
+                                for (Object o : currentFilter.getContexts()) {
+                                    ((CheckComboBox) m).getCheckModel().check(o);
+                                }
+                                b++;
+                            } else if (b == 1) {
+                                for (Object o : currentFilter.getAgeGroups()) {
+                                    ((CheckComboBox) m).getCheckModel().check(o);
+                                }
+                                b++;
+                            } else {
+                                for (Object o : currentFilter.getIncomes()) {
+                                    ((CheckComboBox) m).getCheckModel().check(o);
+                                }
+                                b++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
         filters.setAlignment(filterButton, Pos.BOTTOM_LEFT);
        // filterButton.setAlignment(Pos.BOTTOM_RIGHT);
         filters.setLeft(impressionFilterOptions);
         filters.setRight(filterButton);
         filtersAndMetrics.getChildren().addAll(getMetricsWindow(), new Separator(), filters);
         filtersAndMetrics.setMargin(filters, new Insets(0, 10, 0, 10));
-
         filterButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -250,6 +302,7 @@ public class GUI extends Application {
                 incomes = filterArrays.get(2);
 
                 Filter filter = new Filter(startDate, endDate, context, gender, ageGroups, incomes);
+                setFilter(filter);
                 ArrayList<Click> clicks = controller.filterClickLog(filter);
                 ArrayList<Impression> impressions = controller.filterImpressionLog(filter);
                 ArrayList<ServerEntry> serverEntries = controller.filterServerLog(filter);
@@ -279,7 +332,8 @@ public class GUI extends Application {
      //   settingOption.setValue("Settings");
         
         Menu menu = new Menu("File");
-        
+
+
         MenuItem m1 = new MenuItem("Load...");
             m1.setOnAction(event -> {
                 File[] files = new File(System.getProperty("user.dir") + File.separator + Controller.AD_AUCTION_FOLDER + File.separator + Controller.CAMPAIGN_FOLDER).listFiles();
@@ -308,10 +362,16 @@ public class GUI extends Application {
                     Optional<String> result = dialog.showAndWait();
                     String campaignName;
                     if (result.isPresent()){
-                        controller.loadCampaign(result.get());
+                        currentFilter = controller.loadCampaign(result.get());
                         primaryStage.setTitle("Ad Auction Dashboard - " + controller.getCampaign().getName());
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
                         alert.getDialogPane().getStylesheets().add("/GUI.css");
+                        try {
+                            primaryStage.close();
+                            mainWindow();
+                        }catch (Exception e ){
+                            e.printStackTrace();
+                        }
                         alert.setTitle("Load Campaign");
                         alert.setHeaderText(null);
                         alert.setContentText(result.get() + " has been loaded.");
@@ -324,7 +384,7 @@ public class GUI extends Application {
             @Override
             public void handle(ActionEvent event) {
                 String campaignName = "Campaign " + System.nanoTime();
-                controller.saveCampaign(campaignName);
+                controller.saveCampaign(campaignName, currentFilter);
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.getDialogPane().getStylesheets().add("/GUI.css");
@@ -358,7 +418,7 @@ public class GUI extends Application {
                         else if(!controller.isCampaignNameFree(result.get())){
                             alert.setContentText("Campaign saving failed. The name is already used by another campaign. Please try again with a different name.");
                         } else{
-                            controller.saveCampaign(result.get());
+                            controller.saveCampaign(result.get(), currentFilter);
 
                             alert.setContentText("Campaign saved as \"" + result.get() + "\".");
                         }
@@ -593,19 +653,40 @@ public class GUI extends Application {
         conversionRateField.setEditable(false);
 
 
+        if(currentFilter != null){
+            ArrayList<Click> clicks = controller.filterClickLog(currentFilter);
+            ArrayList<Impression> impressions = controller.filterImpressionLog(currentFilter);
+            ArrayList<ServerEntry> serverEntries = controller.filterServerLog(currentFilter);
 
-        bounceRateField.setText("" + format.format(controller.getBounceRate()));
-        noImpressionsField.setText("" + format.format(controller.getTotalImpressions()));
-        noClicksField.setText("" + format.format(controller.getTotalClicks()));
-        noUniquesField.setText("" + format.format(controller.getTotalUnique()));
-        noBouncesField.setText("" + format.format(controller.getTotalBounces()));
-        noConversionsField.setText("" + format.format(controller.getTotalConversions()));
-        ctrField.setText("" + format.format(controller.getCTR()));
-        cpaField.setText("" + format.format(controller.getCPA()));
-        cpcField.setText("" + format.format(controller.getCPC()));
-        cpmField.setText("" + format.format(controller.getCPM()));
-        totalCostField.setText("" + format.format(controller.getTotalCost()));
-        conversionRateField.setText("" + format.format(controller.getConversionRate()));
+            bounceRateField.setText(format.format(controller.calcBounceRate(serverEntries, clicks)));
+            noImpressionsField.setText(format.format(controller.calcImpressions(impressions)));
+            noClicksField.setText(format.format(controller.calcClicks(clicks)));
+            noUniquesField.setText(format.format(controller.calcUniques(clicks)));
+            noBouncesField.setText(format.format(controller.calcBounces(serverEntries)));
+            noConversionsField.setText(format.format(controller.calcConversions(serverEntries)));
+            ctrField.setText(format.format(controller.calcCTR(clicks, impressions)));
+            cpaField.setText(format.format(controller.calcCPA(impressions, clicks, serverEntries)));
+            cpcField.setText(format.format(controller.calcCPC(clicks)));
+            cpmField.setText(format.format(controller.calcCPM(impressions)));
+            totalCostField.setText(format.format(controller.calcTotalCost(impressions, clicks)));
+            conversionRateField.setText(format.format(controller.calcConvRate(serverEntries, clicks)));
+        } else {
+
+
+            bounceRateField.setText("" + format.format(controller.getBounceRate()));
+            noImpressionsField.setText("" + format.format(controller.getTotalImpressions()));
+            noClicksField.setText("" + format.format(controller.getTotalClicks()));
+            noUniquesField.setText("" + format.format(controller.getTotalUnique()));
+            noBouncesField.setText("" + format.format(controller.getTotalBounces()));
+            noConversionsField.setText("" + format.format(controller.getTotalConversions()));
+            ctrField.setText("" + format.format(controller.getCTR()));
+            cpaField.setText("" + format.format(controller.getCPA()));
+            cpcField.setText("" + format.format(controller.getCPC()));
+            cpmField.setText("" + format.format(controller.getCPM()));
+            totalCostField.setText("" + format.format(controller.getTotalCost()));
+            conversionRateField.setText("" + format.format(controller.getConversionRate()));
+
+        }
 
 
         TilePane impressionFilterOptions = impressionFilters();
@@ -1555,10 +1636,8 @@ public class GUI extends Application {
         int b = 0;
 
         for (Node n : filterNodes) {
-            System.out.println(n);
             if (n instanceof VBox) {
                 for (Node m : ((VBox) n).getChildren()) {
-                    System.out.println(m);
                      if (m instanceof ComboBox) {
                         ((ComboBox) m).setValue(filters.getGender());
                     } else if(m instanceof DatePicker) {
@@ -1786,7 +1865,6 @@ public class GUI extends Application {
 
 			@Override
 			public void handle(ActionEvent event) {
-//			    String userDirectory = System.getProperty("user.dir");
                 File[] files = new File(System.getProperty("user.dir") + File.separator + Controller.AD_AUCTION_FOLDER + File.separator + Controller.CAMPAIGN_FOLDER).listFiles();
                 ArrayList<String> campaigns = new ArrayList<String>();
                 if(files != null){
@@ -1815,7 +1893,7 @@ public class GUI extends Application {
 
                         Optional<String> result = dialog.showAndWait();
                         if (result.isPresent()) {
-                            controller.loadCampaign(result.get());
+                            currentFilter = controller.loadCampaign(result.get());
                             try {
                                 mainWindow();
                             } catch (Exception e) {

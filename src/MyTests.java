@@ -756,8 +756,9 @@ public class MyTests {
     @Test
     public void saveCampaign(){
             Controller controller = new Controller();
+            Filter filter = new Filter(null,null,null,null, null,null );
             controller.loadNewCampaign("/Users/danielraad/Desktop/2_week_campaign_2/server_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/click_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/impression_log.csv", 1);
-            controller.saveCampaign("/Users/danielraad/Desktop/test");
+            controller.saveCampaign("/Users/danielraad/Desktop/test", filter);
             File camp = new File("/Users/danielraad/Desktop/test.txt");
             assertEquals(true, camp.exists());
     }

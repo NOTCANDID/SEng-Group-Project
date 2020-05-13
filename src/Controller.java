@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -59,7 +60,7 @@ public class Controller {
 
 
 //save the log file 
-    public void saveCampaign(String campaignName){
+    public void saveCampaign(String campaignName, Filter filter){
 		Path path = Paths.get(System.getProperty("user.dir") + File.separator + AD_AUCTION_FOLDER + File.separator + CAMPAIGN_FOLDER + File.separator + campaignName);
 
 		// Create directories if the don't yet exist
@@ -108,8 +109,43 @@ public class Controller {
 		File file = new File( path + File.separator + "config.txt");
 		try{
 			String str = Integer.toString(bounceDefinition);
+			String dateFrom  = "";
+			String dateTo = "";
+			if(filter.getStartDate() != null ) {
+				dateFrom = filter.getStartDate().toString();
+			}
+
+			if(filter.getEndDate() != null) {
+				dateTo = filter.getEndDate().toString();
+			}
+
+			String context = "Context:";
+			for(String c : filter.getContexts()){
+				context += c + "," ;
+			}
+			String gender = "Gender:" + filter.getGender();
+			String ageGroup  = "Age:";
+			for(String age : filter.getAgeGroups()){
+				ageGroup += age + "," ;
+			}
+			String income = "Income:";
+			for(String inc : filter.getIncomes()){
+				income += inc + ",";
+			}
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file.getAbsolutePath()));
 			writer.write(str);
+			writer.newLine();
+			writer.write(dateFrom);
+			writer.newLine();
+			writer.write(dateTo);
+			writer.newLine();
+			writer.write(context);
+			writer.newLine();
+			writer.write(gender);
+			writer.newLine();
+			writer.write(ageGroup);
+			writer.newLine();
+			writer.write(income);
 			writer.close();
 		}
 		catch (IOException e){
@@ -118,22 +154,70 @@ public class Controller {
 
     }
 
-    public void loadCampaign(String campaignName){
-        long startTime = System.nanoTime();
+    public Filter loadCampaign(String campaignName){
 		Path path = Paths.get(System.getProperty("user.dir") + File.separator + AD_AUCTION_FOLDER + File.separator + CAMPAIGN_FOLDER + File.separator + campaignName);
 	    try {
 			BufferedReader reader = new BufferedReader(new FileReader(path + File.separator + "config.txt"));
 			String line = reader.readLine();
 			String[] list = line.split(" ");
-
 	    	loadOldCampaign(path + File.separator + SERVER_LOG_NAME, path + File.separator + CLICK_LOG_NAME, path + File.separator + IMPRESSION_LOG_NAME, Integer.parseInt(list[0]), campaignName);
 
+	    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+			String dateFrom = reader.readLine();
+			String[] from = dateFrom.split("T");
+			String date1 = from[0];
+	    	LocalDateTime startTime = LocalDate.parse(date1, formatter).atStartOfDay();
+
+	    	String dateTo = reader.readLine();
+	    	String[] to = dateTo.split("T");
+	    	String dateTo1 = to[0];
+	    	LocalDateTime endTime = LocalDate.parse(dateTo1, formatter).atTime(23, 59, 59);
+
+	    	String nextLine;
+	    	ArrayList<String> filterIncomes = new ArrayList();
+			ArrayList<String> filterAge = new ArrayList();
+			ArrayList<String> filterContext = new ArrayList();
+			String gender = null;
+	    	while ((nextLine = reader.readLine()) != null){
+	    		String[] strFilter = nextLine.split(":");
+	    		switch (strFilter[0]){
+					case "Income":
+						filterIncomes  = new ArrayList<>();
+						String[] incomes  = strFilter[1].split(",");
+						for(String inc : incomes){
+							filterIncomes.add(inc);
+						}
+						break;
+					case "Age":
+						filterAge  = new ArrayList<>();
+						String[] ages  = strFilter[1].split(",");
+						for(String a : ages){
+							filterAge.add(a);
+						}
+						break;
+					case "Gender":
+						gender = strFilter[1];
+						break;
+					case "Context":
+						filterContext  = new ArrayList<>();
+						String[] contexts  = strFilter[1].split(",");
+						for(String c : contexts){
+							filterContext.add(c);
+						}
+						break;
+				}
+			}
+
+	    	Filter filter = new Filter(startTime, endTime, filterContext, gender, filterAge, filterIncomes);
+			return filter;
         }catch (FileNotFoundException e){
 			GUI.displayError(e.getMessage());
         }catch (IOException e){
 			GUI.displayError(e.getMessage());
         }
-	    long endTime = System.nanoTime();
+
+	    return null;
     }
 
 	public double getBounceRate(){
@@ -272,10 +356,6 @@ public class Controller {
 
 		ArrayList<Impression> filteredImpressions = (ArrayList<Impression>) campaign.getImpressions().stream().filter
 				(startDatePredicate.and(endDatePredicate.and(contextsPredicate).and(genderPredicate).and(ageGroupPredicate).and(incomePredicate))).collect(Collectors.toList());
-
-		//for testing
-		//long endTime = System.nanoTime();
-		//System.out.println("Method took:" + (endTime - startTime) / 1000000);
 
 		return filteredImpressions;
 	}
