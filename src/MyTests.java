@@ -93,7 +93,7 @@ public class MyTests {
         String gender = null;
         ArrayList<String> ageGroup = new ArrayList<>();
         Filter filter = new Filter(entryDate, exitDate, context, gender, ageGroup, income);
-        assertEquals(7, controller.filterServerLog(filter).size());
+        assertEquals(9, controller.filterServerLog(filter).size());
     }
 
 
@@ -112,7 +112,7 @@ public class MyTests {
         String gender = null;
         ArrayList<String> ageGroup = new ArrayList<>();
         Filter filter = new Filter(entryDate, exitDate, context, gender, ageGroup, income);
-        assertEquals(8, controller.filterClickLog(filter).size());
+        assertEquals(9, controller.filterClickLog(filter).size());
     }
 
     /**
@@ -130,7 +130,7 @@ public class MyTests {
         String gender = null;
         ArrayList<String> ageGroup = new ArrayList<>();
         Filter filter = new Filter(entryDate, exitDate, context, gender, ageGroup, income);
-        assertEquals(112, controller.filterImpressionLog(filter).size());
+        assertEquals(114, controller.filterImpressionLog(filter).size());
     }
 
 
@@ -643,68 +643,6 @@ public class MyTests {
         assertEquals(33978, datapoints.get(1).getMetric());
     }
 
-
-
-    @Test
-    public void datapointsDatesBarChart(){
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-        ArrayList<String> context = new ArrayList<>();
-        ArrayList<String> income = new ArrayList<>();
-        String gender = null;
-        ArrayList<String> ageGroup = new ArrayList<>();
-
-
-        LocalDateTime entryDate = LocalDateTime.parse("2015-01-01 12:00:00", formatter);
-        LocalDateTime exitDate = LocalDateTime.parse("2015-01-04 00:00:16", formatter);
-
-        Filter filter = new Filter(entryDate, exitDate, context, gender, ageGroup, income);
-
-        Controller controller = new Controller();
-        controller.loadNewCampaign("/Users/danielraad/Desktop/2_week_campaign_2/server_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/click_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/impression_log.csv", 1);
-
-        BarGraph line = new BarGraph(Metric.TOTAL_IMPRESSIONS, BarChartType.DAY_OF_WEEK, filter, controller);
-
-        ArrayList<Bar> datapoints = line.getBars();
-
-        datapoints.get(0).getCategory();
-
-
-    }
-
-
-    @Test
-    public void datapointsDatesBoundaryDayBarChart(){
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-        ArrayList<String> context = new ArrayList<>();
-        ArrayList<String> income = new ArrayList<>();
-        String gender = null;
-        ArrayList<String> ageGroup = new ArrayList<>();
-
-
-        LocalDateTime entryDate = LocalDateTime.parse("2015-01-01 12:00:02", formatter);
-        LocalDateTime exitDate = LocalDateTime.parse("2015-01-04 00:00:16", formatter);
-
-        Filter filter = new Filter(entryDate, exitDate, context, gender, ageGroup, income);
-
-        Controller controller = new Controller();
-        controller.loadNewCampaign("/Users/danielraad/Desktop/2_week_campaign_2/server_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/click_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/impression_log.csv", 1);
-        LineGraph line = new LineGraph(Metric.TOTAL_IMPRESSIONS, TimeInterval.DAY, controller, filter);
-
-        ArrayList<DataPoint> datapoints = line.getDataPoints();
-
-        // expecting two whole days between these two dates
-        // inclusive of the first date
-        assertEquals(3, datapoints.size());
-        assertEquals(33320, datapoints.get(0).getMetric());
-        //checking first date is date expected from the dataset
-        assertEquals("2015-01-01T12:00:02", datapoints.get(0).getStartTime().toString());
-        assertEquals(33978, datapoints.get(1).getMetric());
-    }
-
     // testing dates are what are expected when you have increased them using the functions
     @Test
     public void testDates(){
@@ -723,55 +661,16 @@ public class MyTests {
 
 
 
-    /**
-     *
-     *      TestDrivenDevelopment for saving the charts
-     *
-     */
-    @Test
-    public void saveChart(){
-
-        Controller controller = new Controller();
-        controller.loadNewCampaign("/Users/danielraad/Desktop/2_week_campaign_2/server_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/click_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/impression_log.csv", 1);
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        LocalDateTime entryDate = null;
-        LocalDateTime exitDate = null;
-        ArrayList<String> context = new ArrayList<>();
-        ArrayList<String> income = new ArrayList<>();
-        String gender = null;
-        ArrayList<String> ageGroup = new ArrayList<>();
-        Filter filter = new Filter(entryDate, exitDate, context, gender, ageGroup, income);
-
-        LineGraph line = new LineGraph(Metric.TOTAL_IMPRESSIONS, TimeInterval.DAY, controller,  filter);
-        String chart = "graph1";
-        File chartImage = new File(chart);
-        //this function will exist
-        line.saveGraph(chart);
-        assertEquals(true, chartImage.exists());
-
-    }
-
-
-    /**
-     *
-     *      TestDrivenDevelopment for saving the campaign
-     *
-     */
-    @Test
-    public void stateCreated(){
-        Controller controller = new Controller();
-        controller.loadNewCampaign("/Users/danielraad/Desktop/2_week_campaign_2/server_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/click_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/impression_log.csv", 1);
-        States state = new States();
-        state.save("Nike", controller.getCampaign().getClicks(), controller.getCampaign().getServerEntries(), controller.getCampaign().getImpressions());
-    }
-
     @Test
     public void saveCampaign(){
             Controller controller = new Controller();
+            ArrayList list1 = new ArrayList();
+            ArrayList list2 = new ArrayList();
+            ArrayList list3 = new ArrayList();
+            Filter filter = new Filter(null,null,list1,null, list2,list3 );
             controller.loadNewCampaign("/Users/danielraad/Desktop/2_week_campaign_2/server_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/click_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/impression_log.csv", 1);
-            controller.saveCampaign("/Users/danielraad/Desktop/test");
-            File camp = new File("/Users/danielraad/Desktop/test.txt");
+            controller.saveCampaign("test", filter);
+            File camp = new File("/Users/danielraad/Desktop/UniCourses/SEG/Code/SEng-Group-Project/AdAuction/Campaign/test");
             assertEquals(true, camp.exists());
     }
 
@@ -788,23 +687,9 @@ public class MyTests {
     @Test
     public void loadSavedCampaign(){
         Controller controller = new Controller();
-        controller.loadCampaign("/Users/danielraad/Desktop/test");
+        controller.loadCampaign("test");
         Assert.assertNotNull(controller.getCampaign().getClicks());
     }
-
-
-    /**
-     *
-     *      TestDrivenDevelopment for the BarChart
-     *
-     */
-
-
-    @Test
-    public void barChart(){
-        Controller controller = new Controller();
-    }
-
 
 
 
