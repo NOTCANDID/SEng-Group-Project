@@ -7,13 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96f5439a-fc27-43ff-8e76-79a1ed051bad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AdAuction/Campaign/current/click_log.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdAuction/Campaign/current/config.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdAuction/Campaign/current/impression_log.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AdAuction/Campaign/current/server_log.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$16.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$17.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$19.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$20.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$21.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$22.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/src/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="251">
-              <caret line="1923" column="46" selection-start-line="1923" selection-start-column="39" selection-end-line="1923" selection-end-column="46" />
+              <caret line="1895" column="64" selection-start-line="1895" selection-start-column="55" selection-end-line="1895" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#20324#20325#0" expanded="true" />
@@ -47,33 +52,33 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7305">
-              <caret line="501" column="26" selection-start-line="501" selection-start-column="10" selection-end-line="501" selection-end-column="26" />
+            <state relative-caret-position="346">
+              <caret line="225" column="79" selection-start-line="225" selection-start-column="79" selection-end-line="225" selection-end-column="79" />
               <folding>
-                <element signature="e#6944#6945#0" expanded="true" />
-                <element signature="e#6982#6983#0" expanded="true" />
-                <element signature="e#7018#7019#0" expanded="true" />
-                <element signature="e#7062#7063#0" expanded="true" />
-                <element signature="e#7093#7094#0" expanded="true" />
-                <element signature="e#7132#7133#0" expanded="true" />
-                <element signature="e#7163#7164#0" expanded="true" />
-                <element signature="e#7202#7203#0" expanded="true" />
                 <element signature="e#7234#7235#0" expanded="true" />
-                <element signature="e#7274#7275#0" expanded="true" />
-                <element signature="e#7310#7311#0" expanded="true" />
-                <element signature="e#7354#7355#0" expanded="true" />
-                <element signature="e#7380#7381#0" expanded="true" />
-                <element signature="e#7411#7412#0" expanded="true" />
-                <element signature="e#7437#7438#0" expanded="true" />
-                <element signature="e#7468#7469#0" expanded="true" />
-                <element signature="e#7494#7495#0" expanded="true" />
-                <element signature="e#7525#7526#0" expanded="true" />
-                <element signature="e#7551#7552#0" expanded="true" />
-                <element signature="e#7582#7583#0" expanded="true" />
-                <element signature="e#7614#7615#0" expanded="true" />
-                <element signature="e#7651#7652#0" expanded="true" />
-                <element signature="e#7688#7689#0" expanded="true" />
-                <element signature="e#7730#7731#0" expanded="true" />
+                <element signature="e#7272#7273#0" expanded="true" />
+                <element signature="e#7308#7309#0" expanded="true" />
+                <element signature="e#7352#7353#0" expanded="true" />
+                <element signature="e#7383#7384#0" expanded="true" />
+                <element signature="e#7422#7423#0" expanded="true" />
+                <element signature="e#7453#7454#0" expanded="true" />
+                <element signature="e#7492#7493#0" expanded="true" />
+                <element signature="e#7524#7525#0" expanded="true" />
+                <element signature="e#7564#7565#0" expanded="true" />
+                <element signature="e#7600#7601#0" expanded="true" />
+                <element signature="e#7644#7645#0" expanded="true" />
+                <element signature="e#7670#7671#0" expanded="true" />
+                <element signature="e#7701#7702#0" expanded="true" />
+                <element signature="e#7727#7728#0" expanded="true" />
+                <element signature="e#7758#7759#0" expanded="true" />
+                <element signature="e#7784#7785#0" expanded="true" />
+                <element signature="e#7815#7816#0" expanded="true" />
+                <element signature="e#7841#7842#0" expanded="true" />
+                <element signature="e#7872#7873#0" expanded="true" />
+                <element signature="e#7904#7905#0" expanded="true" />
+                <element signature="e#7941#7942#0" expanded="true" />
+                <element signature="e#7978#7979#0" expanded="true" />
+                <element signature="e#8020#8021#0" expanded="true" />
                 <element signature="e#18564#18572#0" expanded="true" />
               </folding>
             </state>
@@ -83,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MyTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3482">
-              <caret line="760" column="76" selection-start-line="760" selection-start-column="76" selection-end-line="760" selection-end-column="76" />
+            <state relative-caret-position="559">
+              <caret line="702" column="9" lean-forward="true" selection-start-line="702" selection-start-column="9" selection-end-line="702" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,8 +139,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Campaign.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="255">
+              <caret line="65" selection-start-line="65" selection-end-line="65" />
               <folding>
                 <element signature="e#2140#2141#0" expanded="true" />
                 <element signature="e#2172#2173#0" expanded="true" />
@@ -161,7 +166,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getResour</find>
       <find>resour</find>
       <find>help</find>
       <find>save campaign</find>
@@ -184,13 +188,14 @@
       <find>getMetricsWindow</find>
       <find>window</find>
       <find>load</find>
-      <find>loadCampa</find>
       <find>filter</find>
       <find>saveCam</find>
       <find>loadCam</find>
       <find>loadCAMP</find>
       <find>system.</find>
       <find>system.out.print</find>
+      <find>help?</find>
+      <find>loadCampa</find>
     </findStrings>
     <replaceStrings>
       <replace>controller</replace>
@@ -244,9 +249,9 @@
         <option value="$PROJECT_DIR$/src/FileDelete.java" />
         <option value="$PROJECT_DIR$/src/States.java" />
         <option value="$PROJECT_DIR$/src/Campaign.java" />
-        <option value="$PROJECT_DIR$/src/MyTests.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/GUI.java" />
+        <option value="$PROJECT_DIR$/src/MyTests.java" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
       </list>
@@ -317,7 +322,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/IJ/PleaseWorkNow/src/Main.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589332246332" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589336686977" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="C:/../../controlsfx.jar!/" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -362,16 +367,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AdAuction" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <option name="METHOD_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MyTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdAuction" />
       <option name="PACKAGE_NAME" value="" />
@@ -380,21 +375,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyTests.datapointsDates" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyTests.loadSavedCampaign" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdAuction" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MyTests" />
-      <option name="METHOD_NAME" value="datapointsDates" />
+      <option name="METHOD_NAME" value="loadSavedCampaign" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MyTests.datapointsDatesBoundaryDay" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MyTests.saveCampaign" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdAuction" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MyTests" />
-      <option name="METHOD_NAME" value="datapointsDatesBoundaryDay" />
+      <option name="METHOD_NAME" value="saveCampaign" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyTests.saveChart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AdAuction" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MyTests" />
+      <option name="METHOD_NAME" value="saveChart" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -402,18 +407,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.Main" />
+      <item itemvalue="JUnit.MyTests.saveCampaign" />
+      <item itemvalue="JUnit.MyTests.saveChart" />
       <item itemvalue="JUnit.MyTests" />
-      <item itemvalue="JUnit.MyTests.datapointsDates" />
-      <item itemvalue="JUnit.MyTests.datapointsDatesBoundaryDay" />
+      <item itemvalue="JUnit.MyTests.loadSavedCampaign" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.MyTests.datapointsDatesBoundaryDay" />
-        <item itemvalue="JUnit.MyTests.datapointsDates" />
+        <item itemvalue="JUnit.MyTests.loadSavedCampaign" />
         <item itemvalue="JUnit.MyTests" />
-        <item itemvalue="JUnit.MyTests" />
+        <item itemvalue="JUnit.MyTests.saveCampaign" />
+        <item itemvalue="JUnit.MyTests.saveChart" />
       </list>
     </recent_temporary>
   </component>
@@ -671,27 +676,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Main - 2020.05.03 at 14h 41m 10s.xml">
-      <configuration name="Main" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Main - 2020.05.03 at 14h 42m 06s.xml">
-      <configuration name="Main" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2020.05.09 at 13h 06m 57s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2020.05.09 at 13h 07m 49s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2020.05.09 at 13h 14m 37s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests - 2020.05.11 at 18h 05m 27s.xml">
-      <configuration name="MyTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MyTests_datapointsDates - 2020.05.11 at 18h 05m 51s.xml">
-      <configuration name="MyTests.datapointsDates" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MyTests_datapointsDatesBoundaryDay - 2020.05.11 at 18h 06m 13s.xml">
       <configuration name="MyTests.datapointsDatesBoundaryDay" configurationId="JUnit" />
     </history-entry>
@@ -701,9 +685,30 @@
     <history-entry file="MyTests_datapointsDatesBoundaryDay - 2020.05.11 at 18h 11m 32s.xml">
       <configuration name="MyTests.datapointsDatesBoundaryDay" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyTests_saveCampaign - 2020.05.13 at 03h 02m 06s.xml">
+      <configuration name="MyTests.saveCampaign" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests_saveChart - 2020.05.13 at 03h 03m 56s.xml">
+      <configuration name="MyTests.saveChart" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests_saveCampaign - 2020.05.13 at 03h 05m 34s.xml">
+      <configuration name="MyTests.saveCampaign" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests_saveCampaign - 2020.05.13 at 03h 06m 21s.xml">
+      <configuration name="MyTests.saveCampaign" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests_saveCampaign - 2020.05.13 at 03h 07m 37s.xml">
+      <configuration name="MyTests.saveCampaign" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests - 2020.05.13 at 03h 16m 48s.xml">
+      <configuration name="MyTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MyTests_loadSavedCampaign - 2020.05.13 at 03h 17m 13s.xml">
+      <configuration name="MyTests.loadSavedCampaign" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="158549000" />
+    <option name="totallyTimeSpent" value="160690000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -715,7 +720,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.115015976" />
@@ -1036,31 +1041,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Campaign.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="e#2140#2141#0" expanded="true" />
-            <element signature="e#2172#2173#0" expanded="true" />
-            <element signature="e#2194#2195#0" expanded="true" />
-            <element signature="e#2220#2221#0" expanded="true" />
-            <element signature="e#3817#3829#0" expanded="true" />
-            <element signature="e#5221#5234#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MyTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3482">
-          <caret line="760" column="76" selection-start-line="760" selection-start-column="76" selection-end-line="760" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -1075,10 +1055,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Campaign.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="e#2140#2141#0" expanded="true" />
+            <element signature="e#2172#2173#0" expanded="true" />
+            <element signature="e#2194#2195#0" expanded="true" />
+            <element signature="e#2220#2221#0" expanded="true" />
+            <element signature="e#3817#3829#0" expanded="true" />
+            <element signature="e#5221#5234#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="702" column="9" lean-forward="true" selection-start-line="702" selection-start-column="9" selection-end-line="702" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
-          <caret line="1923" column="46" selection-start-line="1923" selection-start-column="39" selection-end-line="1923" selection-end-column="46" />
+          <caret line="1895" column="64" selection-start-line="1895" selection-start-column="55" selection-end-line="1895" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#20324#20325#0" expanded="true" />
@@ -1091,33 +1096,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7305">
-          <caret line="501" column="26" selection-start-line="501" selection-start-column="10" selection-end-line="501" selection-end-column="26" />
+        <state relative-caret-position="346">
+          <caret line="225" column="79" selection-start-line="225" selection-start-column="79" selection-end-line="225" selection-end-column="79" />
           <folding>
-            <element signature="e#6944#6945#0" expanded="true" />
-            <element signature="e#6982#6983#0" expanded="true" />
-            <element signature="e#7018#7019#0" expanded="true" />
-            <element signature="e#7062#7063#0" expanded="true" />
-            <element signature="e#7093#7094#0" expanded="true" />
-            <element signature="e#7132#7133#0" expanded="true" />
-            <element signature="e#7163#7164#0" expanded="true" />
-            <element signature="e#7202#7203#0" expanded="true" />
             <element signature="e#7234#7235#0" expanded="true" />
-            <element signature="e#7274#7275#0" expanded="true" />
-            <element signature="e#7310#7311#0" expanded="true" />
-            <element signature="e#7354#7355#0" expanded="true" />
-            <element signature="e#7380#7381#0" expanded="true" />
-            <element signature="e#7411#7412#0" expanded="true" />
-            <element signature="e#7437#7438#0" expanded="true" />
-            <element signature="e#7468#7469#0" expanded="true" />
-            <element signature="e#7494#7495#0" expanded="true" />
-            <element signature="e#7525#7526#0" expanded="true" />
-            <element signature="e#7551#7552#0" expanded="true" />
-            <element signature="e#7582#7583#0" expanded="true" />
-            <element signature="e#7614#7615#0" expanded="true" />
-            <element signature="e#7651#7652#0" expanded="true" />
-            <element signature="e#7688#7689#0" expanded="true" />
-            <element signature="e#7730#7731#0" expanded="true" />
+            <element signature="e#7272#7273#0" expanded="true" />
+            <element signature="e#7308#7309#0" expanded="true" />
+            <element signature="e#7352#7353#0" expanded="true" />
+            <element signature="e#7383#7384#0" expanded="true" />
+            <element signature="e#7422#7423#0" expanded="true" />
+            <element signature="e#7453#7454#0" expanded="true" />
+            <element signature="e#7492#7493#0" expanded="true" />
+            <element signature="e#7524#7525#0" expanded="true" />
+            <element signature="e#7564#7565#0" expanded="true" />
+            <element signature="e#7600#7601#0" expanded="true" />
+            <element signature="e#7644#7645#0" expanded="true" />
+            <element signature="e#7670#7671#0" expanded="true" />
+            <element signature="e#7701#7702#0" expanded="true" />
+            <element signature="e#7727#7728#0" expanded="true" />
+            <element signature="e#7758#7759#0" expanded="true" />
+            <element signature="e#7784#7785#0" expanded="true" />
+            <element signature="e#7815#7816#0" expanded="true" />
+            <element signature="e#7841#7842#0" expanded="true" />
+            <element signature="e#7872#7873#0" expanded="true" />
+            <element signature="e#7904#7905#0" expanded="true" />
+            <element signature="e#7941#7942#0" expanded="true" />
+            <element signature="e#7978#7979#0" expanded="true" />
+            <element signature="e#8020#8021#0" expanded="true" />
             <element signature="e#18564#18572#0" expanded="true" />
           </folding>
         </state>
