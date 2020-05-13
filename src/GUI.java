@@ -442,29 +442,33 @@ public class GUI extends Application {
 
 // Create expandable Exception.
                     String exceptionText = "Ad Auction User Manual\n" +
+                            "\n" +
                             "1. Running the program 1\n" +
                             "2. Initial set-up 1\n" +
                             "2.1. Following set-up 1\n" +
                             "3. Main window 2\n" +
                             "3.1. File 2\n" +
                             "3.2. Layout 2\n" +
-                            "3.3. Metrics 2\n" +
+                            "3.3.Metrics 2\n" +
                             "4. Line Graph 2\n" +
-                            "4.1. Choosing filters 2\n" +
+                            "4.1.Choosing filters 2\n" +
                             "4.2. Line Graph window 2\n" +
                             "4.3. Saving 3\n" +
-                            "4.4. Printing 3\n" +
+                            "4.4.Printing 3\n" +
+                            "4.5.Comparing 3\n" +
                             "5. Other Graphs 3\n" +
-                            "5.1. Histogram 3\n" +
-                            "5.2. Bar Chart 3\n" +
+                            "5.1.Histogram 3\n" +
+                            "5.2.Bar Chart 3\n" +
                             "\n" +
                             "1. Running the program\n" +
                             "The program will be packaged as an executable .jar file so all you need to do to start " +
                             "the program is\n" +
-                            "to either run it through the console or simply double click it. All the files needed to " +
-                            "run the program\n" +
-                            "are already packaged in the .jar, all the user needs is the Clicks, Server and " +
-                            "Impressions data files.\n" +
+                            "to either double click it or if your system doesn’t support that run it through the " +
+                            "console with the\n" +
+                            "command “java -jar AdAuctionDashboard.jar”. All the files needed to run the program are " +
+                            "already\n" +
+                            "packaged in the .jar, all the user needs is the Clicks, Server and Impressions data " +
+                            "files.\n" +
                             "\n" +
                             "2. Initial set-up\n" +
                             "Upon launching the program, you will see a screen prompting you to load the three files " +
@@ -488,7 +492,9 @@ public class GUI extends Application {
                             "track of all\n" +
                             "previously saved campaigns, so if you want to delete a previous campaign click the " +
                             "delete campaign\n" +
-                            "button and select the one you want deleted.3. Main window\n" +
+                            "button and select the one you want deleted.\n" +
+                            "\n" +
+                            "3. Main window\n" +
                             "Once you’ve chosen your files and hit continue, you will be brought to the main window " +
                             "of the\n" +
                             "application. The program automatically calculates all the metrics for you and displays " +
@@ -558,8 +564,10 @@ public class GUI extends Application {
                             "there are nodes\n" +
                             "in between you have missed they will be excluded. You can also pan around the graph if " +
                             "you want to\n" +
-                            "look at different parts of it.You can also change the filters, metric or granularity if " +
-                            "you want, and clicking the filter button on the\n" +
+                            "look at different parts of it.\n" +
+                            "\n" +
+                            "You can also change the filters, metric or granularity if you want, and clicking the " +
+                            "filter button on the\n" +
                             "bottom right will update all the values in the currently displayed graph without " +
                             "creating a new\n" +
                             "window.\n" +
@@ -567,9 +575,9 @@ public class GUI extends Application {
                             "4.3. Saving\n" +
                             "You can save the currently displayed graph by clicking the save button under the filter " +
                             "button. Doing\n" +
-                            "so will open a menu asking you where you want to save the graph, saving it as a .jpeg " +
-                            "for you to use\n" +
-                            "later.\n" +
+                            "so will save the current graph as a .jpeg, including the filter options under it. The " +
+                            "image will\n" +
+                            "automatically be saved into the file the program is in.\n" +
                             "\n" +
                             "4.4. Printing\n" +
                             "You can also print the current graph by clicking the print button by the save button. It" +
@@ -577,6 +585,16 @@ public class GUI extends Application {
                             "to a printing menu where you can change the printer and set the printer settings, and " +
                             "once you hit\n" +
                             "confirm on that menu it will print out a colour copy of your graph.\n" +
+                            "\n" +
+                            "4.5. Comparing\n" +
+                            "Creating a new line graph will not affect the current line graph. This means that if you" +
+                            " want to\n" +
+                            "compare graphs to each other you can create a second graph from the main screen with a " +
+                            "separate\n" +
+                            "set of filters and then lay them next to each other. Alternatively, you can save each " +
+                            "graph as an\n" +
+                            "image then compare them outside the program.\n" +
+                            "\n" +
                             "5. Other graphs\n" +
                             "5.1. Histogram\n" +
                             "The histogram button will let you create a histogram of the total costs of the current " +
@@ -597,7 +615,7 @@ public class GUI extends Application {
                             "where the granularity button would be, and like the line graph has the same printing, " +
                             "saving and\n" +
                             "zooming functionality. It also lets you change the filters of a chart without creating a" +
-                            " new window";
+                            " new window.";
 
                     TextArea textArea = new TextArea(exceptionText);
                     textArea.setEditable(false);
