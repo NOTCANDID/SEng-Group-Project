@@ -753,19 +753,6 @@ public class MyTests {
     }
 
 
-    /**
-     *
-     *      TestDrivenDevelopment for saving the campaign
-     *
-     */
-    @Test
-    public void stateCreated(){
-        Controller controller = new Controller();
-        controller.loadNewCampaign("/Users/danielraad/Desktop/2_week_campaign_2/server_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/click_log.csv", "/Users/danielraad/Desktop/2_week_campaign_2/impression_log.csv", 1);
-        States state = new States();
-        state.save("Nike", controller.getCampaign().getClicks(), controller.getCampaign().getServerEntries(), controller.getCampaign().getImpressions());
-    }
-
     @Test
     public void saveCampaign(){
             Controller controller = new Controller();

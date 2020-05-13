@@ -164,7 +164,6 @@ public class GUI extends Application {
         Group root = new Group();
         Stage primaryStage = new Stage();
 
-
         StackPane layering = new StackPane();
         Canvas canvas = new Canvas();
 
@@ -526,7 +525,12 @@ public class GUI extends Application {
         Scene scene = new Scene(root, 1700, 700);
         primaryStage.setScene(scene);
         scene.getStylesheets().add("/GUI.css");
-        primaryStage.setTitle("Ad Auction Dashboard");
+        if(controller.getCampaign().getName() != null){
+            primaryStage.setTitle("Ad Auction Dashboard - " + controller.getCampaign().getName());
+        } else {
+            primaryStage.setTitle("Ad Auction Dashboard");
+        }
+
         primaryStage.show();
 
         //controller.createBarChar(Metric.TOTAL_IMPRESSIONS, BarChartType.DAY_OF_WEEK,
@@ -994,7 +998,7 @@ public class GUI extends Application {
 
         TilePane impressionFilterOptions = impressionFilters();
 
-        HBox impressionMetricsOptions = addImpHbox();
+        HBox impressionMetricsOptions = addImpHbox(Metric.BOUNCES);
         VBox filterPane = new VBox(10);
         Label granLabel = new Label("Granularity: ");
         filterPane.getChildren().addAll(impressionFilterOptions, impressionMetricsOptions);
@@ -1110,7 +1114,7 @@ public class GUI extends Application {
 
         TilePane impressionFilterOptions = impressionFilters();
 
-        HBox impressionMetricsOptions = addImpHbox();
+        HBox impressionMetricsOptions = addImpHbox(Metric.BOUNCES);
         VBox filterPane = new VBox(10);
         Label barTypeLabel = new Label("Type: ");
         filterPane.getChildren().addAll(impressionFilterOptions, impressionMetricsOptions);
@@ -1251,7 +1255,7 @@ public class GUI extends Application {
 
         TilePane impressionFilterOptions = impressionFilters();
 
-        HBox impressionMetricsOptions = addImpHbox();
+        HBox impressionMetricsOptions = addImpHbox(metric);
         VBox filterPane = new VBox(10);
         Label granLabel = new Label("Type: ");
         filterPane.getChildren().addAll(impressionFilterOptions, impressionMetricsOptions);
@@ -1259,7 +1263,7 @@ public class GUI extends Application {
 
         ComboBox<BarChartType> barType =
 				new ComboBox<BarChartType>(FXCollections.observableArrayList(barChartType));
-        barType.setValue(BarChartType.DAY_OF_WEEK);
+        barType.setValue(type);
 
         VBox windowLayout = new VBox(10);
         HBox metricsGranularity = new HBox(10);
@@ -1399,6 +1403,7 @@ public class GUI extends Application {
                 for (Bar b : dataBars) {
                     series2.getData().add(new XYChart.Data(b.getCategory(), b.getMetric()));
                 }
+                xAxis.setLabel("" + barType.getValue());
                 barChart.getData().clear();
                 barChart.getData().add(series2);
                 barChart.setTitle(metrics.get(0) + " Bar chart");
@@ -1453,15 +1458,15 @@ public class GUI extends Application {
         TextInputDialog dialog = new TextInputDialog();
         dialog.getDialogPane().getStylesheets().add("/GUI.css");
         dialog.setTitle("AdAuction");
-        dialog.setHeaderText("Save campaign");
-        dialog.setContentText("Please enter the name of the campaign:");
+        dialog.setHeaderText("Save Chart");
+        dialog.setContentText("Please enter the name of the chart:");
         File file = null;
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.getDialogPane().getStylesheets().add("/GUI.css");
             alert.setHeaderText(null);
-            alert.setTitle("Save Campaign");
+            alert.setTitle("Save Chart");
             if (result.get().equals("")) {
                 alert.setContentText("Chart saving failed. You need to provide the name of the chart. Please try again.");
             } else {
@@ -1483,12 +1488,12 @@ public class GUI extends Application {
 
 
     //Metric
-    public HBox addImpHbox() {
+    public HBox addImpHbox(Metric metric) {
         ChoiceBox<Metric> impressionMetricChoices = new ChoiceBox<Metric>();
-        for(Metric metric : Metric.values()){
-            impressionMetricChoices.getItems().add(metric);
+        for(Metric metrics : Metric.values()){
+            impressionMetricChoices.getItems().add(metrics);
         }
-        impressionMetricChoices.setValue(Metric.BOUNCES);
+        impressionMetricChoices.setValue(metric);
         Label impressionMetricLabel = new Label("Metric: ");
         HBox impMetricBox = new HBox(impressionMetricLabel, impressionMetricChoices);
 
@@ -1535,10 +1540,13 @@ public class GUI extends Application {
 
         TilePane impressionFilterOptions = impressionFilters();
 
-        HBox impressionMetricsOptions = addImpHbox();
+        HBox impressionMetricsOptions = addImpHbox(metric);
         VBox filterPane = new VBox(10);
         Label granLabel = new Label("Granularity: ");
         filterPane.getChildren().addAll(impressionFilterOptions, impressionMetricsOptions);
+
+        ComboBox<TimeInterval> granularity =
+                new ComboBox<TimeInterval>(FXCollections.observableArrayList(granularityOptions));
 
         ObservableList<Node> filterNodes = null;
         filterNodes = impressionFilterOptions.getChildren();
@@ -1547,8 +1555,10 @@ public class GUI extends Application {
         int b = 0;
 
         for (Node n : filterNodes) {
+            System.out.println(n);
             if (n instanceof VBox) {
                 for (Node m : ((VBox) n).getChildren()) {
+                    System.out.println(m);
                      if (m instanceof ComboBox) {
                         ((ComboBox) m).setValue(filters.getGender());
                     } else if(m instanceof DatePicker) {
@@ -1582,16 +1592,15 @@ public class GUI extends Application {
                     			((CheckComboBox) m).getCheckModel().check(o);
                     		}
                     		b++;
-                    	}               	
+                    	}
                     }               
                 }
             }
         }
         
         
-        ComboBox<TimeInterval> granularity =
-                new ComboBox<TimeInterval>(FXCollections.observableArrayList(granularityOptions));
-        granularity.setValue(TimeInterval.DAY);
+
+        granularity.setValue(interval);
 
         VBox windowLayout = new VBox(10);
         HBox metricsGranularity = new HBox(10);

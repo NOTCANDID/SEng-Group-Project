@@ -18,8 +18,6 @@ public class Controller {
 
 	private Campaign campaign;
 	private GUI gui;
-	private States state = new States();
-
 	private int bounceDefinition = 1;
 
 	public static final String AD_AUCTION_FOLDER = "AdAuction";
@@ -49,7 +47,7 @@ public class Controller {
 	}
 
 	/**
-	 * 	Create new campaign with a name
+	 * 	Create old campaign with a name
 	 */
 
 	public void loadOldCampaign(String serverFilePath, String clickFilePath, String impressionFilePath, int bounceDefinition, String name){
@@ -58,82 +56,6 @@ public class Controller {
 		campaign.setName(name);
 	}
 
-	/**
-	 * @param fileName of the serialised Campaign file
-	 */
-	public void deserializeCampaign(String fileName){
-		try {
-			FileInputStream file = new FileInputStream(fileName);
-			ObjectInputStream in = new ObjectInputStream(file);
-			this.campaign = (Campaign)in.readObject();
-			in.close();
-			file.close();
-		}
-
-		catch (IOException ex) {
-			GUI.displayError(ex.getMessage());
-		}
-
-		catch (ClassNotFoundException ex) {
-			GUI.displayError(ex.getMessage());
-		}
-
-	}
-
-
-	/**
-	 * @param fileName of the file to be serialised
-	 */
-	public void serializeCampaign(String fileName){
-		long startTime = System.nanoTime();
-		try {
-			FileOutputStream file = new FileOutputStream(fileName);
-			ObjectOutputStream out = new ObjectOutputStream(file);
-			out.writeObject(campaign);
-			out.close();
-			file.close();
-		} catch (IOException e) {
-			GUI.displayError(e.getMessage());
-		}
-
-	}
-
-//	public void saveCampaign(String filename){
-//		state.save(filename, campaign.getClicks(), campaign.getServerEntries(), campaign.getImpressions());
-//	}
-//
-//	public void loadCampaign(String filename){
-//
-//		long startTime = System.nanoTime();
-//		ArrayList<Object> list = state.loadCampaign(filename);
-//
-//		ArrayList<Click> clicks = new ArrayList<>();
-//		ArrayList<ServerEntry> serverEntries = new ArrayList<>();
-//		ArrayList<Impression> impressions = new ArrayList<>();
-//
-//		for(Object o : list){
-//
-//			if( o instanceof Click){
-//				clicks.add((Click) o);
-//			}
-//
-//			if( o instanceof ServerEntry){
-//				serverEntries.add((ServerEntry) o );
-//			}
-//
-//			if( o instanceof Impression){
-//				impressions.add((Impression) o);
-//			}
-//
-//		}
-//
-//		Campaign campaign = new Campaign(serverEntries, clicks, impressions, this);
-//		this.campaign = campaign;
-//
-//		long endTime = System.nanoTime();
-//		System.out.println("Method took:" + (endTime - startTime) / 1000000);
-//
-//	}
 
 
 //save the log file 
