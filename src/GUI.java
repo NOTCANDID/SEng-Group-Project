@@ -24,6 +24,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.*;
 import javafx.scene.text.Font;
@@ -432,14 +433,197 @@ public class GUI extends Application {
             m4.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
-                    try {
-                        File pdf = new File(this.getClass().getResource("Ad Auction User Manual.pdf").toURI());
-                        Desktop.getDesktop().open(pdf);
-                    }catch (IOException e){
-                        e.printStackTrace();
-                    }catch (URISyntaxException e){
-                        e.printStackTrace();
-                    }
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("AdAuction");
+                    alert.setHeaderText(null);
+                    alert.setContentText("User Guide");
+                    alert.getDialogPane().getStylesheets().add("/GUI.css");
+
+// Create expandable Exception.
+                    String exceptionText = "Ad Auction User Manual\n" +
+                            "1. Running the program 1\n" +
+                            "2. Initial set-up 1\n" +
+                            "2.1. Following set-up 1\n" +
+                            "3. Main window 2\n" +
+                            "3.1. File 2\n" +
+                            "3.2. Layout 2\n" +
+                            "3.3. Metrics 2\n" +
+                            "4. Line Graph 2\n" +
+                            "4.1. Choosing filters 2\n" +
+                            "4.2. Line Graph window 2\n" +
+                            "4.3. Saving 3\n" +
+                            "4.4. Printing 3\n" +
+                            "5. Other Graphs 3\n" +
+                            "5.1. Histogram 3\n" +
+                            "5.2. Bar Chart 3\n" +
+                            "\n" +
+                            "1. Running the program\n" +
+                            "The program will be packaged as an executable .jar file so all you need to do to start " +
+                            "the program is\n" +
+                            "to either run it through the console or simply double click it. All the files needed to " +
+                            "run the program\n" +
+                            "are already packaged in the .jar, all the user needs is the Clicks, Server and " +
+                            "Impressions data files.\n" +
+                            "\n" +
+                            "2. Initial set-up\n" +
+                            "Upon launching the program, you will see a screen prompting you to load the three files " +
+                            "you want to\n" +
+                            "view in the database. Each button will take you to a file explorer to pick out your " +
+                            "files and there are\n" +
+                            "checks in place to prevent you from selecting the wrong files.\n" +
+                            "After selecting the files there is a text box which allows you to decide how the bounces" +
+                            " are defined\n" +
+                            "in your program. By default, a bounce is set to a single page viewed before leaving but " +
+                            "you can\n" +
+                            "change this if necessary.\n" +
+                            "Once finished click the continue button to start.\n" +
+                            "\n" +
+                            "2.1. Following set-ups\n" +
+                            "After you’ve loaded and saved a campaign, you can load that campaign back up easily by " +
+                            "clicking the\n" +
+                            "load previous button at the top. It will bring up a menu letting you choose from any of " +
+                            "your\n" +
+                            "previously saved campaigns, simply chose the one you want and hit continue. It keeps " +
+                            "track of all\n" +
+                            "previously saved campaigns, so if you want to delete a previous campaign click the " +
+                            "delete campaign\n" +
+                            "button and select the one you want deleted.3. Main window\n" +
+                            "Once you’ve chosen your files and hit continue, you will be brought to the main window " +
+                            "of the\n" +
+                            "application. The program automatically calculates all the metrics for you and displays " +
+                            "them on the\n" +
+                            "right and from here you can decide whether you want to create a line graph, histogram or" +
+                            " bar chart\n" +
+                            "using the corresponding buttons.\n" +
+                            "\n" +
+                            "3.1. File\n" +
+                            "In the upper left corner is a file dropdown button which allows you to both save and " +
+                            "load a\n" +
+                            "campaign. If you click the load option you will be brought to a similar dialogue box to " +
+                            "the one from\n" +
+                            "the set-up window which will ask you to select a previous campaign, loading the new " +
+                            "campaign in\n" +
+                            "the current window.\n" +
+                            "The save and save as options will save the campaign and the corresponding data files for" +
+                            " use later.\n" +
+                            "The save option will simply save it as a default name while save as will bring up a " +
+                            "window that lets\n" +
+                            "you type the name yourself.\n" +
+                            "\n" +
+                            "3.2. Layout\n" +
+                            "We’ve included numerous layout options that let you customise the appearance of the " +
+                            "program. In\n" +
+                            "the upper right corner, you should see a slider option; this lets you change the font " +
+                            "size across the\n" +
+                            "program in case you feel like the default size is too small.\n" +
+                            "Next to the file button you should see a colour selector. This feature lets you change " +
+                            "the default\n" +
+                            "background colour of the application, either choosing from a grid of colours or by going" +
+                            " into a\n" +
+                            "detailed colour picker to get your own.\n" +
+                            "\n" +
+                            "3.3. Metrics\n" +
+                            "On the right side of the window you should see all the metrics calculated and displayed." +
+                            " Under these\n" +
+                            "are a set of filter options: these let you filter the metrics based on age, income, " +
+                            "context, gender and\n" +
+                            "date. Most of these filters are multiple selection, and for the dates if you click on " +
+                            "the calendar icon\n" +
+                            "next to the box it will bring up a calendar that allows you to choose between which days" +
+                            " you want to\n" +
+                            "see the data. If you leave a filter blank it will take all those filters into " +
+                            "consideration.\n" +
+                            "\n" +
+                            "4. Line graph\n" +
+                            "4.1. Filters\n" +
+                            "When you click on the line graph button you’ll be taken to a screen where you can choose" +
+                            " what you\n" +
+                            "want to filter the line graph by. The filters are the same as the ones used to filter " +
+                            "the metrics, with\n" +
+                            "the addition of a metric selector that lets you decide which metric the line graph will " +
+                            "represent.\n" +
+                            "Under the filters is a granularity option which lets you decide per which time frame to " +
+                            "calculate each\n" +
+                            "node on the graph, allowing you to go between hour, day, week and month. Once you have " +
+                            "selected\n" +
+                            "your filters click the create button to create your line graph.\n" +
+                            "\n" +
+                            "4.2. Line graph window\n" +
+                            "When you create your graph, a window will appear displaying the graph and the filters " +
+                            "you are using.\n" +
+                            "You can you the mouse to highlight an area to zoom in on it and zoom out with double " +
+                            "click,\n" +
+                            "although be aware that it will only zoom in on the nodes you have highlighted so if " +
+                            "there are nodes\n" +
+                            "in between you have missed they will be excluded. You can also pan around the graph if " +
+                            "you want to\n" +
+                            "look at different parts of it.You can also change the filters, metric or granularity if " +
+                            "you want, and clicking the filter button on the\n" +
+                            "bottom right will update all the values in the currently displayed graph without " +
+                            "creating a new\n" +
+                            "window.\n" +
+                            "\n" +
+                            "4.3. Saving\n" +
+                            "You can save the currently displayed graph by clicking the save button under the filter " +
+                            "button. Doing\n" +
+                            "so will open a menu asking you where you want to save the graph, saving it as a .jpeg " +
+                            "for you to use\n" +
+                            "later.\n" +
+                            "\n" +
+                            "4.4. Printing\n" +
+                            "You can also print the current graph by clicking the print button by the save button. It" +
+                            " will take you\n" +
+                            "to a printing menu where you can change the printer and set the printer settings, and " +
+                            "once you hit\n" +
+                            "confirm on that menu it will print out a colour copy of your graph.\n" +
+                            "5. Other graphs\n" +
+                            "5.1. Histogram\n" +
+                            "The histogram button will let you create a histogram of the total costs of the current " +
+                            "campaign. It\n" +
+                            "has a very similar set up as the line graph creator with the same printing and saving " +
+                            "functionality, the\n" +
+                            "main differences being that you cannot alter the granularity or the metric; it will only" +
+                            " show total\n" +
+                            "cost.\n" +
+                            "\n" +
+                            "5.2. Bar chart\n" +
+                            "The bar chart button will let you create a bar chart in a similar way to the way to the " +
+                            "line graph. The\n" +
+                            "bar chart offers a better way of visualising data, letting you either see how the values" +
+                            " of a metric\n" +
+                            "varied over a day or over a week. You can switch between the two using the bar chart " +
+                            "type button\n" +
+                            "where the granularity button would be, and like the line graph has the same printing, " +
+                            "saving and\n" +
+                            "zooming functionality. It also lets you change the filters of a chart without creating a" +
+                            " new window";
+
+                    TextArea textArea = new TextArea(exceptionText);
+                    textArea.setEditable(false);
+                    textArea.setWrapText(true);
+
+                    textArea.setMaxWidth(Double.MAX_VALUE);
+                    textArea.setMaxHeight(Double.MAX_VALUE);
+                    GridPane.setVgrow(textArea, Priority.ALWAYS);
+                    GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+                    GridPane expContent = new GridPane();
+                    expContent.setMaxWidth(Double.MAX_VALUE);
+                    expContent.add(textArea, 0, 1);
+
+// Set expandable Exception into the dialog pane.
+                    alert.getDialogPane().setExpandableContent(expContent);
+
+                    alert.showAndWait();
+//                    try {
+//                        File pdf = new File(this.getClass().getResource("Ad Auction User Manual.pdf").toURI());
+//                        Desktop.getDesktop().open(pdf);
+//                    }catch (IOException e){
+//                        e.printStackTrace();
+//                    }catch (URISyntaxException e){
+//                        e.printStackTrace();
+//                    }
                 }
             });
         menu.getItems().addAll(m1, m2, m3, m4);
