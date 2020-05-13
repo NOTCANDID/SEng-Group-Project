@@ -8,18 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="96f5439a-fc27-43ff-8e76-79a1ed051bad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$15.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$16.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$16.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$17.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$17.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$18.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$19.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$19.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$20.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$20.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$21.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$21.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI$22.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI$22.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AdAuction/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AdAuction/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="1895" column="64" selection-start-line="1895" selection-start-column="55" selection-end-line="1895" selection-end-column="64" />
+            <state relative-caret-position="227">
+              <caret line="585" column="8" selection-start-line="585" selection-start-column="8" selection-end-line="585" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#20324#20325#0" expanded="true" />
@@ -49,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="225" column="79" selection-start-line="225" selection-start-column="79" selection-end-line="225" selection-end-column="79" />
+            <state relative-caret-position="660">
+              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
               <folding>
                 <element signature="e#7234#7235#0" expanded="true" />
                 <element signature="e#7272#7273#0" expanded="true" />
@@ -89,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/src/MyTests.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="559">
-              <caret line="702" column="9" lean-forward="true" selection-start-line="702" selection-start-column="9" selection-end-line="702" selection-end-column="9" />
+              <caret line="702" column="9" selection-start-line="702" selection-start-column="9" selection-end-line="702" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -166,8 +155,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>resour</find>
-      <find>help</find>
       <find>save campaign</find>
       <find>gui</find>
       <find>load</find>
@@ -196,6 +183,8 @@
       <find>system.out.print</find>
       <find>help?</find>
       <find>loadCampa</find>
+      <find>mainwindow</find>
+      <find>primary</find>
     </findStrings>
     <replaceStrings>
       <replace>controller</replace>
@@ -250,10 +239,10 @@
         <option value="$PROJECT_DIR$/src/States.java" />
         <option value="$PROJECT_DIR$/src/Campaign.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/GUI.java" />
         <option value="$PROJECT_DIR$/src/MyTests.java" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
+        <option value="$PROJECT_DIR$/src/GUI.java" />
       </list>
     </option>
   </component>
@@ -264,7 +253,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="1" />
+    <option name="x" value="193" />
     <option name="y" value="23" />
     <option name="width" value="1399" />
     <option name="height" value="877" />
@@ -322,7 +311,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/IJ/PleaseWorkNow/src/Main.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589336686977" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589362669443" />
     <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="C:/../../controlsfx.jar!/" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -676,9 +665,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MyTests_datapointsDatesBoundaryDay - 2020.05.11 at 18h 06m 13s.xml">
-      <configuration name="MyTests.datapointsDatesBoundaryDay" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MyTests_datapointsDatesBoundaryDay - 2020.05.11 at 18h 10m 35s.xml">
       <configuration name="MyTests.datapointsDatesBoundaryDay" configurationId="JUnit" />
     </history-entry>
@@ -706,9 +692,12 @@
     <history-entry file="MyTests_loadSavedCampaign - 2020.05.13 at 03h 17m 13s.xml">
       <configuration name="MyTests.loadSavedCampaign" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MyTests_loadSavedCampaign - 2020.05.13 at 03h 23m 21s.xml">
+      <configuration name="MyTests.loadSavedCampaign" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="160690000" />
+    <option name="totallyTimeSpent" value="161415000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -720,10 +709,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.115015976" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15450644" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -732,7 +721,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4968017" visible="true" weight="0.16633664" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4968017" visible="true" weight="0.20240964" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1073,31 +1062,17 @@
     <entry file="file://$PROJECT_DIR$/src/MyTests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="559">
-          <caret line="702" column="9" lean-forward="true" selection-start-line="702" selection-start-column="9" selection-end-line="702" selection-end-column="9" />
+          <caret line="702" column="9" selection-start-line="702" selection-start-column="9" selection-end-line="702" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="1895" column="64" selection-start-line="1895" selection-start-column="55" selection-end-line="1895" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#20324#20325#0" expanded="true" />
-            <element signature="e#20388#20389#0" expanded="true" />
-            <element signature="e#20550#20551#0" expanded="true" />
-            <element signature="e#20613#20614#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="225" column="79" selection-start-line="225" selection-start-column="79" selection-end-line="225" selection-end-column="79" />
+        <state relative-caret-position="660">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
           <folding>
             <element signature="e#7234#7235#0" expanded="true" />
             <element signature="e#7272#7273#0" expanded="true" />
@@ -1124,6 +1099,20 @@
             <element signature="e#7978#7979#0" expanded="true" />
             <element signature="e#8020#8021#0" expanded="true" />
             <element signature="e#18564#18572#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="585" column="8" selection-start-line="585" selection-start-column="8" selection-end-line="585" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#20324#20325#0" expanded="true" />
+            <element signature="e#20388#20389#0" expanded="true" />
+            <element signature="e#20550#20551#0" expanded="true" />
+            <element signature="e#20613#20614#0" expanded="true" />
           </folding>
         </state>
       </provider>

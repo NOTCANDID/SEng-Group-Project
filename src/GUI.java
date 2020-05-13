@@ -583,6 +583,10 @@ public class GUI extends Application {
         root.getChildren().add(layering);
 	    root.setAutoSizeChildren(true);
         Scene scene = new Scene(root, 1700, 700);
+        primaryStage.setMinHeight(700);
+        primaryStage.setMaxHeight(700);
+        primaryStage.setMinWidth(1450);
+        primaryStage.setMaxWidth(1450);
         primaryStage.setScene(scene);
         scene.getStylesheets().add("/GUI.css");
         if(controller.getCampaign().getName() != null){
