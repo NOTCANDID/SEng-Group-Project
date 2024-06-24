@@ -239,7 +239,7 @@ public class GUI extends Application {
         filters.setAlignment(filterButton, Pos.BOTTOM_LEFT);
        // filterButton.setAlignment(Pos.BOTTOM_RIGHT);
         filters.setLeft(impressionFilterOptions);
-        filters.setRight(filterButton);
+        filters.setCenter(filterButton);
         filtersAndMetrics.getChildren().addAll(getMetricsWindow(), new Separator(), filters);
         filtersAndMetrics.setMargin(filters, new Insets(0, 10, 0, 10));
         filterButton.setOnAction(new EventHandler<ActionEvent>() {
